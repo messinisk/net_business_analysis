@@ -2,6 +2,11 @@ activity_radios
 financial_structure_and_viability_radio
 liquidity_radios
 profitability_radios
+.gitignore
+# git commit -m "project template"
+# git tag -a v1.0 -m "Έκδοση 1.0"
+# git push origin main  # Αν το branch λέγεται `main`
+# git push origin v1.0
 
 
 
