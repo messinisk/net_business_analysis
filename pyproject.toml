@@ -1,0 +1,22 @@
+[project]
+name = "net-analysis"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "diagrams>=0.24.1",
+    "icecream>=2.1.3",
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "pytest-html>=4.1.1",
+    "ruff>=0.8.6",
+    "setuptools>=75.7.0",
+    "tox>=4.23.2",
+]
+
+[tool.uv.workspace]
+members = ["project_code/Net_Analysis"]
