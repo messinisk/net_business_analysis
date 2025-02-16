@@ -1,7 +1,7 @@
 [project]
-name = "net-analysis"
-version = "0.1.0"
-description = "Add your description here"
+name = "net_analysis"
+version = "0.0.6"
+description = "A package that aims to cover the analysis of the financial situations of businesses with the help of numerical indicators."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
@@ -19,4 +19,4 @@ dev = [
 ]
 
 [tool.uv.workspace]
-members = ["project_code/Net_Analysis"]
+members = ["net_business_analysis/net_analysis"]
