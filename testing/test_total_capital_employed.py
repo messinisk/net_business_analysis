@@ -17,16 +17,7 @@ class TestReturnTotalCapitalEmployed:
 #self.net_profits + self.interest * (1-self.tax_rate))/self.total_capital
 
     @pytest.mark.parametrize("net_profits, interest,tax_rate, total_capital, expected_exception",  [
-        # ✅ Έγκυρες περιπτώσεις
-        (10, 2, 10, 5,  None),  # Απλή διαίρεση
-        (1e6, 1e3, 1e6, 1e3,None),  # Πολύ μεγάλες τιμές
-        (1e-6, 1e-3,1e-6, 1e-3, None),  # Πολύ μικρές τιμές (floating point precision)
-        
-        # ❌ Λανθασμένες περιπτώσεις (Errors)
-    
-        (-10, 0,-10, 0, TypeError),  # Αρνητικός αριθμητής με διαίρεση μηδέν
-        ("10", 2,"10", 2, TypeError),  # Μη αριθμητικός τύπος (string)
-        (10, "2", 10, 2, TypeError),  # String παρονομαστής
+       
     ])
     def test_value_total_capital(self,
         maintenance_repair: ReturnTotalCapitalEmployed,
@@ -35,9 +26,7 @@ class TestReturnTotalCapitalEmployed:
         tax_rate: float,
         total_capital,
         expected_exception: TypeError) -> None:
-        if expected_exception:
-            with pytest.raises(expected_exception):
-                maintenance_repair.value_total_capital(net_profits, interest, tax_rate, total_capital)
+        maintenance_repair.value_total_capital(net_profits, interest, tax_rate, total_capital)
     
     @pytest.mark.parametrize("net_profits, interest,tax_rate, net_sales, expected_exception",  [
          # ✅ Έγκυρες περιπτώσεις

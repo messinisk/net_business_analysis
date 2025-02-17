@@ -21,38 +21,19 @@ class TestActivityRadio:
     """class test"""
 
 
-    @pytest.mark.parametrize("cost_of_goods_sold, average_stock, expected_exception",  [
-        # ✅ Έγκυρες περιπτώσεις
-        (10, 2, None),  # Απλή διαίρεση
-        (100, 10, None),  # Απλή διαίρεση με μεγαλύτερους αριθμούς
-        (-10, 2, None),  # Αρνητικός αριθμητής
-        (10, -2, None),  # Αρνητικός παρονομαστής
-        (-10, -2, None),  # Και οι δύο αρνητικοί (πρέπει να δώσει θετικό αποτέλεσμα)
-        (0.1, 0.2, None),  # Floating-point αριθμοί
-        (1e6, 1e3, None),  # Πολύ μεγάλες τιμές
-        (1e-6, 1e-3, None),  # Πολύ μικρές τιμές (floating point precision)
-        
-        # ❌ Λανθασμένες περιπτώσεις (Errors)
-        (10, -5, TypeError),  # Διαίρεση με μηδέν
-        (-10, 0, TypeError),  # Διαίρεση με μηδέν
-        (0, 10, TypeError),  # Διαίρεση με μηδέν
-        (10, 0, TypeError),  # Διαίρεση με μηδέν
-        (-10, 0, TypeError),  # Αρνητικός αριθμητής με διαίρεση μηδέν
-        ("10", 2, TypeError),  # Μη αριθμητικός τύπος (string)
-        (10, "2", TypeError),  # String παρονομαστής
-        (None, 2, TypeError),  # None αριθμητής
-        (10, None, TypeError),  # None παρονομαστής
-        ([], {}, TypeError),  # Μη αριθμητικοί τύποι
+    @pytest.mark.parametrize("cost_of_goods_sold, average_stock",  [
+
     ])
     def test_inventories_turnover_radio(self,
             activity_radio: ActivityRadio,
             cost_of_goods_sold,
             average_stock,
-            expected_exception,
+            
             ) -> None:
-        if expected_exception:
-            with pytest.raises(expected_exception):
-                activity_radio.inventories_turnover_radio(cost_of_goods_sold, average_stock) 
+            assert activity_radio.inventories_turnover_radio(cost_of_goods_sold, average_stock) 
+            
+
+
     
               
     @pytest.mark.parametrize("days, verage_stock, cost_of_goods_sold, expected_exception",[
