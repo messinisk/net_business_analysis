@@ -56,16 +56,16 @@ class ActivityRadio:
         if self.average_stock > 0 and self.cost_of_goods_sold > 0:
             return round(self.cost_of_goods_sold / self.average_stock, 2)
         else:
-            if self.cost_of_goods_sold < 0 and self.average_stock:
+            if self.cost_of_goods_sold < 0 and self.average_stock < 0:
                 if self.average_stock < 0:
                     self.average_stock = abs(self.average_stock)
-                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
                 if self.cost_of_goods_sold < 0:
                     self.cost_of_goods_sold = abs(self.cost_of_goods_sold)
-                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
 
             if self.average_stock == 0 or  self.cost_of_goods_sold ==0:
-                print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
+                raise ZeroDivisionError("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
                 return " "
        
             return abs(round(self.cost_of_goods_sold / self.average_stock, 2))
@@ -88,8 +88,22 @@ class ActivityRadio:
         Returns:
             float: self.days * self.verage_stock) / self.cost_of_goods_sold
         """
+        if self.average_stock > 0 and self.cost_of_goods_sold > 0:
+            return round((self.days * self.average_stock) / self.cost_of_goods_sold, 2)
+        else:
+            if self.cost_of_goods_sold < 0 and self.average_stock < 0 :
+                if self.average_stock < 0:
+                    self.average_stock = abs(self.average_stock)
+                    raise TypeError("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                if self.cost_of_goods_sold < 0:
+                    self.cost_of_goods_sold = abs(self.cost_of_goods_sold)
+                    raise TypeError("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+
+            if self.average_stock == 0 or  self.cost_of_goods_sold ==0:
+                raise ZeroDivisionError("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
+       
+            return abs(round((self.days * self.average_stock) / self.cost_of_goods_sold, 2))
         
-        return round((self.days * self.average_stock) / self.cost_of_goods_sold, 2)
 
     def speed_of_collection_of_receivables(self) -> float:
         """
@@ -106,17 +120,16 @@ class ActivityRadio:
         if self.sale_on_credit > 0 and self.average_requirement > 0:
             return round(self.sale_on_credit / self.average_requirement, 2)
         else:
-            if self.sale_on_credit < 0 and self.average_requirement:
+            if self.sale_on_credit < 0 and self.average_requirement < 0:
                 if self.sale_on_credit < 0:
                     self.sale_on_credit = abs(self.sale_on_credit)
-                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
                 if self.average_requirement < 0:
                     self.average_requirement = abs(self.average_requirement)
-                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
 
-            if self.sale_on_credit == 0 or  self.average_requirement ==0:
-                print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
-                return " "
+            if self.sale_on_credit == 0 or  self.average_requirement == 0:
+                raise ZeroDivisionError("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
        
             return abs(round(self.sale_on_credit / self.average_requirement, 2))
 
@@ -135,7 +148,23 @@ class ActivityRadio:
 
         Returns:
             float: μεσος χρονος απαιτησεων"""
-        return round((self.days * self.average_requirement) / self.sale_on_credit, 2)
+        if self.average_requirement > 0 and self.sale_on_credit > 0:
+            return round((self.days * self.average_requirement) / self.sale_on_credit, 2)
+        else:
+            if self.average_requirement < 0 and self.sale_on_credit < 0:
+                if self.average_requirement < 0:
+                    self.average_requirement = abs(self.average_requirement)
+                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                if self.sale_on_credit < 0:
+                    self.sale_on_credit = abs(self.sale_on_credit)
+                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+
+            if self.average_requirement == 0 or  self.sale_on_credit ==0:
+                print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
+                return " "
+       
+            return abs(round((self.days * self.average_requirement) / self.sale_on_credit, 2))
+
 
     def business_cycle(self) -> float:
         """
@@ -150,8 +179,14 @@ class ActivityRadio:
         Returns:
             float: λειτουργικος κύκλος της επιχειρησης
         """
-
-        return round((self.average_dwell_time_of_inventory_in_the_warehouse() + self.speed_of_collection_of_receivables()), 2)
+        try:
+            the_warehouse_average = self.average_dwell_time_of_inventory_in_the_warehouse()
+            collection_of_receivables = self.speed_of_collection_of_receivables()
+            if the_warehouse_average > 0 and collection_of_receivables > 0:
+                return round(the_warehouse_average + collection_of_receivables, 2)
+        except ZeroDivisionError:
+            print("προκληθηκε ZeroDivisionError επανεξεταστε τα δεδομενα ")
+            return 0.0
 
     def velocity_of_current_liabilities(self) -> float:
         """
@@ -203,7 +238,23 @@ class ActivityRadio:
         Returns:
             float: μέση περίοδος αποπληρωμής των βραχυπρόθεσμων υποχρεώσεων
         """
-        return round((self.medium_term_short_term_liabilities * self.days) / self.sourcing, 2)
+        if self.sourcing > 0 and self.medium_term_short_term_liabilities > 0:
+            return round((self.medium_term_short_term_liabilities * self.days) / self.sourcing, 2)
+        else:
+            if self.sourcing < 0 and self.average_requirement:
+                if self.sourcing < 0:
+                    self.sourcing = abs(self.sourcing)
+                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                if self.medium_term_short_term_liabilities < 0:
+                    self.medium_term_short_term_liabilities = abs(self.medium_term_short_term_liabilities)
+                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+
+            if self.sourcing == 0 or  self.medium_term_short_term_liabilities ==0:
+                print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
+                return " "
+       
+            return abs(round((self.medium_term_short_term_liabilities * self.days) / self.sourcing, 2))
+
 
     def net_working_capital_turnover_speed(self) -> float:
         """
@@ -220,7 +271,24 @@ class ActivityRadio:
         Returns:
             float: ταχύτητα κυκλοφορία καθαρού κεφαλαίου κίνησης
         """
-        return round(self.net_sales / self.net_working_capital, 2)
+        if self.net_sales > 0 and self.net_working_capital > 0:
+            return round(self.net_sales / self.net_working_capital, 2)
+        else:
+            if self.net_sales < 0 and self.net_working_capital:
+                if self.net_sales < 0:
+                    self.net_sales = abs(self.net_sales)
+                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                if self.net_working_capital < 0:
+                    self.net_working_capital = abs(self.net_working_capital)
+                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+
+            if self.net_sales == 0 or  self.net_working_capital ==0:
+                print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
+                return " "
+       
+            return abs(round(self.net_sales / self.net_working_capital, 2))
+
+
 
     def turnover_speed_total_assets(self) -> float:
         """
@@ -305,5 +373,5 @@ class ActivityRadio:
     
 
 if __name__ == "__main__":
-    run = ActivityRadio(cost_of_goods_sold = -100, average_stock= 0 )
-    print(run.inventories_turnover_radio())
+    run = ActivityRadio(cost_of_goods_sold= -500, average_stock = 8000, sale_on_credit  = 10_000, average_requirement = 5000 )
+    print(run.business_cycle())
