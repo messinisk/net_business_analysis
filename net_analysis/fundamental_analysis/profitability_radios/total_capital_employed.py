@@ -1,5 +1,6 @@
 class MetaData:
-    """## Return:  meta data """
+    """## Return:  meta data"""
+
     net_profit = """[Τεκμηρίωση net_profit]
 [Στις επιχειρήσεις, το καθαρό εισόδημα ή τα καθαρά κέρδη είναι τα έσοδα μείον το κόστος πωληθέντων αγαθών, τα έξοδα και τους φόρους για μια λογιστική χρήση.]
 [Documentation net_profit]
@@ -22,7 +23,7 @@ class MetaData:
 [Documentation tax_rate]
 [The tax rate (tax_rate) is a percentage that represents the amount of tax levied on the profits of a business or an individual. It is usually expressed as a decimal number or percentage.]
 """
-    total_capital="""[Τεκμηρίωση total_capital]
+    total_capital = """[Τεκμηρίωση total_capital]
 [ο συνολικό κεφάλαιο αναφέρεται στο άθροισμα όλων των οικονομικών πόρων που διαθέτει μία επιχείρηση ή ένα άτομο, συμπεριλαμβανομένων ιδίων κεφαλαίων και δανειακού κεφαλαίου. Περιλαμβάνει όλα τα στοιχεία ενεργητικού που χρησιμοποιούνται για την επίτευξη κέρδους,]
 [όπως μετρητά, επενδύσεις, ακίνητα και εξοπλισμό. Είναι ένας σημαντικός δείκτης για την οικονομική κατάσταση και τη χρηματοδοτική ικανότητα.]
 [Documentation total_capital]
@@ -30,25 +31,26 @@ class MetaData:
 [such as cash, investments, property and equipment. It is an important indicator of financial status and financial capacity.]
 """
 
+
 class ReturnTotalCapitalEmployed:
     """
     ### Τεκμηρίωση\n
-    Η κλάση Επιστρέψτε το συνολικό κεφάλαιο,\n\n  
-    ενσωματώνει όλους   εκείνους τους λογαριασμούς\n\n  
+    Η κλάση Επιστρέψτε το συνολικό κεφάλαιο,\n\n
+    ενσωματώνει όλους   εκείνους τους λογαριασμούς\n\n
     που χρησιμοποιούν οι μέθοδοι του.\n
-    Αυτή οι λογαριασμοί  Αρχικοποιούνται ως πραγματική κάτι\n\n  
+    Αυτή οι λογαριασμοί  Αρχικοποιούνται ως πραγματική κάτι\n\n
     συνηθισμένο στον τρόπο απεικόνισης στην λογιστική.\n
-    Για να αντιμετωπίσουμε πιθανό σφάλματα Division Error που\n\n  
+    Για να αντιμετωπίσουμε πιθανό σφάλματα Division Error που\n\n
     αφορά διαίρεση με το 0  αρχικοποιούμε  σε τιμή ίση με  1.0\n
-    και ταυτόχρονα αποκτάμε προαιρετική χρήση μεθόδων άλλα και\n\n  
-    επιλογή ποια ορίσματα θέλουμε.\n\n  
+    και ταυτόχρονα αποκτάμε προαιρετική χρήση μεθόδων άλλα και\n\n
+    επιλογή ποια ορίσματα θέλουμε.\n\n
     ### Documentation\n
     The Financial Leverage Radio class \n
-    encapsulates all those accounts that its methods use.\n 
+    encapsulates all those accounts that its methods use.\n
     This accounts are initialized as real something \n
-    common in the way of representation in accounting.\n 
+    common in the way of representation in accounting.\n
     To deal with possible Division Error errors related to division by 0\n
-    we initialize to a value equal to 1.0\n 
+    we initialize to a value equal to 1.0\n
     and at the same time get optional use\n
     of other methods and choice of which arguments we want.
     +method :
@@ -58,56 +60,66 @@ class ReturnTotalCapitalEmployed:
         return_total_capital_employed-> float
 
     """
-    def __init__(self,
-        net_profits:float=1.0,
-        interest: float=1.0,
-        total_capital:float=1.0,
-        tax_rate: float=1.0,
-        net_sales:float=1.0):
+
+    def __init__(
+        self,
+        net_profits: float = 1.0,
+        interest: float = 1.0,
+        total_capital: float = 1.0,
+        tax_rate: float = 1.0,
+        net_sales: float = 1.0,
+    ):
         self.net_profits = net_profits
         self.interest = interest
         self.total_capital = total_capital
-        self.tax_rate =tax_rate
-        self.net_sales =  net_sales 
+        self.tax_rate = tax_rate
+        self.net_sales = net_sales
 
-
-    def value_total_capital(self)-> float:
+    def value_total_capital(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η μέθοδος αξία του συνολικού κεφαλαίου , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n 
+        Η μέθοδος αξία του συνολικού κεφαλαίου , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n
         ### Documentation\n
-        The total capital value method inherits Accounts from the ReturnTotalCapitalEmployed class.\n 
+        The total capital value method inherits Accounts from the ReturnTotalCapitalEmployed class.\n
         ### return: round(((self.net_profits + self.interest * (1-self.tax_rate))/self.total_capital), 8)
         """
-        return round(((self.net_profits + self.interest * (1-self.tax_rate))/self.total_capital), 8)
-    
-    def net_profit_margin(self)-> float:
+        return round(
+            (
+                (self.net_profits + self.interest * (1 - self.tax_rate))
+                / self.total_capital
+            ),
+            8,
+        )
+
+    def net_profit_margin(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η μέθοδος περιθώριο καθαρού κέρδους , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n 
+        Η μέθοδος περιθώριο καθαρού κέρδους , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n
         ### Documentation\n
-        The net_profit_margin method inherits Accounts from the ReturnTotalCapitalEmployed class.\n 
+        The net_profit_margin method inherits Accounts from the ReturnTotalCapitalEmployed class.\n
         ### Returns: round(((self.net_profits + self.interest*(1 - self.tax_rate))/self.net_sales), 2)
         """
-        return round(((self.net_profits + self.interest*(1 - self.tax_rate))/self.net_sales), 2)
-    
-    def asset_turnover_velocity(self)-> float:
+        return round(
+            ((self.net_profits + self.interest * (1 - self.tax_rate)) / self.net_sales),
+            2,
+        )
+
+    def asset_turnover_velocity(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η μέθοδος ταχύτητα κύκλου εργασιών , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n 
+        Η μέθοδος ταχύτητα κύκλου εργασιών , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n
         ### Documentation\n
-        The asset turnover velocity method inherits Accounts from the ReturnTotalCapitalEmployed class.\n 
-        ### return round((self.net_sales/self.total_capital), 2)     
+        The asset turnover velocity method inherits Accounts from the ReturnTotalCapitalEmployed class.\n
+        ### return round((self.net_sales/self.total_capital), 2)
         """
-        return round((self.net_sales/self.total_capital), 2)
-    
-    def return_total_capital_employed(self)-> float:
+        return round((self.net_sales / self.total_capital), 2)
+
+    def return_total_capital_employed(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η μέθοδος ταχυτητα κυκλοφοριας ενεργητικου , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n 
+        Η μέθοδος ταχυτητα κυκλοφοριας ενεργητικου , κληρονομεί τους λογαριασμούς από την ReturnTotalCapitalEmployed κλάση.\n
         ### Documentation\n
-        The asset turnover velocity method inherits Accounts from the ReturnTotalCapitalEmployed class.\n 
+        The asset turnover velocity method inherits Accounts from the ReturnTotalCapitalEmployed class.\n
         ### return round((self.net_profit_margin()/self.asset_turnover_velocity()), 2)
         """
-        return round((self.net_profit_margin()/self.asset_turnover_velocity()), 2)
-    
+        return round((self.net_profit_margin() / self.asset_turnover_velocity()), 2)

@@ -3,8 +3,10 @@
 # net working capital
 """
 
+
 class MetaData:
-    """## Return:  meta data """
+    """## Return:  meta data"""
+
     circulating_assets = """[Τεκμηρίωση circulating_assets]
 [Κυκλοφορούντα Περιουσιακά στοιχεία αποτελούν τα περιουσιακά στοιχεία του Ενεργητικού που προορίζονται να αλλάζουν θέση και μορφή μία ή περισσότερες φορές μέσα σε μια διαχειριστική χρήση (ένα έτος).]
 [Τα κυκλοφορούντα περιουσιακά στοιχεία διακρίνονται σε:]
@@ -31,7 +33,7 @@ Current Assets are the assets of the Asset that are intended to change position 
 [Documentation available_cash]
 [They are the assets that can be converted into money immediately and safely, that is, they can be used for payments at any time, such as cash (cash), demand deposits, maturing notes receivable.]
 """
-    stock="""[Τεκμηρίωση stock]
+    stock = """[Τεκμηρίωση stock]
 [Το  μέγιστου αποθέματος μια συγκεκριμένης ημέρας στην αποθήκη.]
 [Documentation average_stock]
 [The maximum stock of a particular day in the warehouse).          ]
@@ -61,7 +63,7 @@ Current Assets are the assets of the Asset that are intended to change position 
             self.short_term_liabilities,
             self.available_cash,
             self.forecast_daily_expenses,
-            self.requirements
+            self.requirements,
         ]
         return "\n\n".join(map(str, attributes))
 
@@ -72,11 +74,11 @@ class LiquidityRadios:
     Η κλάση Μικτό περιθώριο,  ενσωματώνει όλους   εκείνους τους λογαριασμούς που χρησιμοποιούν οι μέθοδοι του.\n
     Αυτή οι λογαριασμοί  Αρχικοποιούνται ως πραγματική κάτι συνηθισμένο στον τρόπο απεικόνισης στην λογιστική.\n
     Για να   αντιμετωπίσουμε πιθανό σφάλματα Division Error που αφορά διαίρεση με το 0  αρχικοποιούμε  σε τιμή ίση με  1.0\n
-    και ταυτόχρονα αποκτάμε προαιρετική χρήση μεθόδων άλλα και  επιλογή ποια ορίσματα θέλουμε.\n\n  
+    και ταυτόχρονα αποκτάμε προαιρετική χρήση μεθόδων άλλα και  επιλογή ποια ορίσματα θέλουμε.\n\n
     ### Documentation\n
-    The Gross Margin class encapsulates all those accounts that its methods use.\n 
-    This accounts are initialized as real something common in the way of representation in accounting.\n 
-    To deal with possible Division Error errors related to division by 0 we initialize to a value equal to 1.0\n 
+    The Gross Margin class encapsulates all those accounts that its methods use.\n
+    This accounts are initialized as real something common in the way of representation in accounting.\n
+    To deal with possible Division Error errors related to division by 0 we initialize to a value equal to 1.0\n
     and at the same time get optional use of other methods and choice of which arguments we want.
     method :
         +current_radio-> float
@@ -88,13 +90,16 @@ class LiquidityRadios:
         +quick_radio-> float
 
     """
-    def __init__(self,
+
+    def __init__(
+        self,
         circulating_assets: float,
         short_term_liabilities: float,
         available_cash: float,
         stocks: float,
         forecast_daily_expenses: float,
-        requirements: float)->None:
+        requirements: float,
+    ) -> None:
         self.circulating_assets = circulating_assets
         self.short_term_liabilities = short_term_liabilities
         self.available_cash = available_cash
@@ -114,16 +119,22 @@ class LiquidityRadios:
 
     def defensive_interval(self) -> float:
         """Το αμυντικό διάστημα"""
-        return round((self.circulating_assets - self.stocks) / self.forecast_daily_expenses, 2)
+        return round(
+            (self.circulating_assets - self.stocks) / self.forecast_daily_expenses, 2
+        )
 
-    def net_working_capital(self)-> float:
+    def net_working_capital(self) -> float:
         """καθαρο κεφαλαιο κινησης"""
         return round(self.short_term_liabilities / self.circulating_assets, 2)
 
-    def acid_test_radio(self)-> float:
+    def acid_test_radio(self) -> float:
         """Άμεση ρευστότητα"""
-        return round(((self.circulating_assets - self.stocks) / self.short_term_liabilities), 2)
+        return round(
+            ((self.circulating_assets - self.stocks) / self.short_term_liabilities), 2
+        )
 
-    def quick_radio(self)-> float:
+    def quick_radio(self) -> float:
         """Άμεση ρευστότητα"""
-        return round(((self.requirements - self.available_cash) / self.short_term_liabilities), 2)
+        return round(
+            ((self.requirements - self.available_cash) / self.short_term_liabilities), 2
+        )

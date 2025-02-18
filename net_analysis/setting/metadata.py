@@ -1,13 +1,12 @@
-
-
 class MetaArgs:
-    """## Return:  meta data """
+    """## Return:  meta data"""
+
     cost_of_goods_sold = """[Τεκμηρίωση cost_of_goods_sold]
 [Βασικό στοιχείο που επηρεάζει τα μικτά αποτελέσματα της χρήσης είναι το κόστος των πωληθέντων αποθεμάτων.]
 [Το κόστος πωλήσεων περιλαμβάνει τη διαφορά μεταξύ των κονδυλίων «κύκλος εργασιών» και «μικτά αποτελέσματα εκμεταλλεύσεως».   ]\n[Documentation cost_of_goods_sold]
 [A key factor affecting the mixed results for the year is the cost of inventory sold. ]
 [Cost of sales includes the difference between 'turnover' and 'gross operating results]'."""
-    average_stock="""[Τεκμηρίωση average_stock]
+    average_stock = """[Τεκμηρίωση average_stock]
 [Το μέσο απόθεμα ανέρχεται στο μισό του μέγιστου αποθέματος ( [παραγωγή ανά ημέρα - ζήτηση ανά ημέρα] χ περίοδος παραγωγής σε ημέρες).]
 [Documentation average_stock]\n[The average inventory is half of the maximum inventory ( [production per day - demand per day] x production period in days).          ]
 """

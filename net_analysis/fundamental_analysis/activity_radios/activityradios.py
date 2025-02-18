@@ -1,5 +1,3 @@
-
-
 """
 El:Αυτή η μονά περιλαμβάνει μεθόδους εκτιμούν
 την δραστηριότητα  της επιχείρησης.
@@ -9,20 +7,22 @@ the business activity
 
 
 class ActivityRadio:
-    def __init__(self,
-        cost_of_goods_sold: float =  1.0,
-        average_stock = 1.0,
+    def __init__(
+        self,
+        cost_of_goods_sold: float = 1.0,
+        average_stock=1.0,
         days: int = 365,
         sale_on_credit: float = 1.0,
         average_requirement: float = 1.0,
-        medium_term_short_term_liabilities: float= 1.0,
-        sourcing: float= 1.0,
-        net_working_capital: float= 1.0,
-        net_sales: float= 1.0,
-        total_assets: float=1.0,
+        medium_term_short_term_liabilities: float = 1.0,
+        sourcing: float = 1.0,
+        net_working_capital: float = 1.0,
+        net_sales: float = 1.0,
+        total_assets: float = 1.0,
         net_assets: float = 1.0,
         invested_capital: float = 1.0,
-        net_profit: float = 1.0)-> None:
+        net_profit: float = 1.0,
+    ) -> None:
         self.cost_of_goods_sold = cost_of_goods_sold
         self.average_stock = average_stock
         self.days = days
@@ -32,7 +32,7 @@ class ActivityRadio:
         self.sourcing = sourcing
         self.net_working_capital = net_working_capital
         self.net_sales = net_sales
-        self.total_assets =  total_assets
+        self.total_assets = total_assets
         self.net_assets = net_assets
         self.invested_capital = invested_capital
         self.net_profit = net_profit
@@ -59,15 +59,21 @@ class ActivityRadio:
             if self.cost_of_goods_sold < 0 and self.average_stock < 0:
                 if self.average_stock < 0:
                     self.average_stock = abs(self.average_stock)
-                    raise TypeError("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError(
+                        "Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
                 if self.cost_of_goods_sold < 0:
                     self.cost_of_goods_sold = abs(self.cost_of_goods_sold)
-                    raise TypeError("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError(
+                        "Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
 
-            if self.average_stock == 0 or  self.cost_of_goods_sold ==0:
-                raise ZeroDivisionError("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
+            if self.average_stock == 0 or self.cost_of_goods_sold == 0:
+                raise ZeroDivisionError(
+                    "Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']"
+                )
                 return " "
-       
+
             return abs(round(self.cost_of_goods_sold / self.average_stock, 2))
 
     def average_dwell_time_of_inventory_in_the_warehouse(self) -> float:
@@ -91,19 +97,26 @@ class ActivityRadio:
         if self.average_stock > 0 and self.cost_of_goods_sold > 0:
             return round((self.days * self.average_stock) / self.cost_of_goods_sold, 2)
         else:
-            if self.cost_of_goods_sold < 0 and self.average_stock < 0 :
+            if self.cost_of_goods_sold < 0 and self.average_stock < 0:
                 if self.average_stock < 0:
                     self.average_stock = abs(self.average_stock)
-                    raise TypeError("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError(
+                        "Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
                 if self.cost_of_goods_sold < 0:
                     self.cost_of_goods_sold = abs(self.cost_of_goods_sold)
-                    raise TypeError("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError(
+                        "Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
 
-            if self.average_stock == 0 or  self.cost_of_goods_sold ==0:
-                raise ZeroDivisionError("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
-       
-            return abs(round((self.days * self.average_stock) / self.cost_of_goods_sold, 2))
-        
+            if self.average_stock == 0 or self.cost_of_goods_sold == 0:
+                raise ZeroDivisionError(
+                    "Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']"
+                )
+
+            return abs(
+                round((self.days * self.average_stock) / self.cost_of_goods_sold, 2)
+            )
 
     def speed_of_collection_of_receivables(self) -> float:
         """
@@ -123,20 +136,26 @@ class ActivityRadio:
             if self.sale_on_credit < 0 and self.average_requirement < 0:
                 if self.sale_on_credit < 0:
                     self.sale_on_credit = abs(self.sale_on_credit)
-                    raise TypeError("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError(
+                        "Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
                 if self.average_requirement < 0:
                     self.average_requirement = abs(self.average_requirement)
-                    raise TypeError("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    raise TypeError(
+                        "Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
 
-            if self.sale_on_credit == 0 or  self.average_requirement == 0:
-                raise ZeroDivisionError("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
-       
+            if self.sale_on_credit == 0 or self.average_requirement == 0:
+                raise ZeroDivisionError(
+                    "Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']"
+                )
+
             return abs(round(self.sale_on_credit / self.average_requirement, 2))
 
     def average_demand_period(self) -> float:
         """
         ## Τεκμηρίωση\n
-        ### Μέσος Χρόνος Είσπραξης Απαιτήσεων 
+        ### Μέσος Χρόνος Είσπραξης Απαιτήσεων
         ΟΜέσος Χρόνος Είσπραξης Απαιτήσεων που αφορούν πώλησης επί πίστωση ανά ήμερα .
         ## Documentation\n
         ### Average Claims Collection Time
@@ -149,22 +168,29 @@ class ActivityRadio:
         Returns:
             float: μεσος χρονος απαιτησεων"""
         if self.average_requirement > 0 and self.sale_on_credit > 0:
-            return round((self.days * self.average_requirement) / self.sale_on_credit, 2)
+            return round(
+                (self.days * self.average_requirement) / self.sale_on_credit, 2
+            )
         else:
             if self.average_requirement < 0 and self.sale_on_credit < 0:
                 if self.average_requirement < 0:
                     self.average_requirement = abs(self.average_requirement)
-                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    print(
+                        "Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
                 if self.sale_on_credit < 0:
                     self.sale_on_credit = abs(self.sale_on_credit)
-                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    print(
+                        "Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
 
-            if self.average_requirement == 0 or  self.sale_on_credit ==0:
+            if self.average_requirement == 0 or self.sale_on_credit == 0:
                 print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
                 return " "
-       
-            return abs(round((self.days * self.average_requirement) / self.sale_on_credit, 2))
 
+            return abs(
+                round((self.days * self.average_requirement) / self.sale_on_credit, 2)
+            )
 
     def business_cycle(self) -> float:
         """
@@ -180,7 +206,9 @@ class ActivityRadio:
             float: λειτουργικος κύκλος της επιχειρησης
         """
         try:
-            the_warehouse_average = self.average_dwell_time_of_inventory_in_the_warehouse()
+            the_warehouse_average = (
+                self.average_dwell_time_of_inventory_in_the_warehouse()
+            )
             collection_of_receivables = self.speed_of_collection_of_receivables()
             if the_warehouse_average > 0 and collection_of_receivables > 0:
                 return round(the_warehouse_average + collection_of_receivables, 2)
@@ -195,9 +223,9 @@ class ActivityRadio:
         για μεταπώληση άλλα και για παραγωγή    σε  ημιτελών προϊόντων, πρώτες ύλες , βοηθητικές ύλες )
         και την ανάλογη αύξηση ή μείωση της βραχυπρόθεσμες  υποχρεώσεις (όπως γραμματεία πληρωτέα, επιταγές πληρωτέες, λογαριασμός προμηθευτών.
         ### Documentation\n
-        The speed index of short-term liabilities monitors purchases (which are included 
+        The speed index of short-term liabilities monitors purchases (which are included
         in these purchases of product requests for resale other than for production in unfinished products, raw materials,
-        auxiliary materials) and the corresponding increase or decrease 
+        auxiliary materials) and the corresponding increase or decrease
         in short-term liabilities (such as accounts payable, checks payable, accounts payable.
         Args:
             sourcing (float): αγορες
@@ -212,16 +240,24 @@ class ActivityRadio:
             if self.sourcing < 0 and self.average_requirement:
                 if self.sourcing < 0:
                     self.sourcing = abs(self.sourcing)
-                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    print(
+                        "Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
                 if self.medium_term_short_term_liabilities < 0:
-                    self.medium_term_short_term_liabilities = abs(self.medium_term_short_term_liabilities)
-                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    self.medium_term_short_term_liabilities = abs(
+                        self.medium_term_short_term_liabilities
+                    )
+                    print(
+                        "Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
 
-            if self.sourcing == 0 or  self.medium_term_short_term_liabilities ==0:
+            if self.sourcing == 0 or self.medium_term_short_term_liabilities == 0:
                 print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
                 return " "
-       
-            return abs(round(self.sourcing / self.medium_term_short_term_liabilities, 2))
+
+            return abs(
+                round(self.sourcing / self.medium_term_short_term_liabilities, 2)
+            )
 
     def average_repayment_period_of_short_term_liabilities(self) -> float:
         """
@@ -229,7 +265,7 @@ class ActivityRadio:
         Η μέση περίοδος αποπληρωμής των βραχυπρόθεσμων υποχρεώσεων είναι ένα μέσος  όρος
         αξιόλογη κάλυψη υποχρεώσεων στην διάρκεια  ενός έτους  συγκρινόμενο  με τις  πωλήσεις .
         ### Documentation\n
-        The average payback period of short-term liabilities is an average creditable 
+        The average payback period of short-term liabilities is an average creditable
         coverage of liabilities over the course of a year compared to sales.
         Args:
             medium_term_short_term_liabilities (float):  Μ.Ο. βραχυπρόθεσμων υποχρεώσεων
@@ -239,30 +275,43 @@ class ActivityRadio:
             float: μέση περίοδος αποπληρωμής των βραχυπρόθεσμων υποχρεώσεων
         """
         if self.sourcing > 0 and self.medium_term_short_term_liabilities > 0:
-            return round((self.medium_term_short_term_liabilities * self.days) / self.sourcing, 2)
+            return round(
+                (self.medium_term_short_term_liabilities * self.days) / self.sourcing, 2
+            )
         else:
             if self.sourcing < 0 and self.average_requirement:
                 if self.sourcing < 0:
                     self.sourcing = abs(self.sourcing)
-                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    print(
+                        "Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
                 if self.medium_term_short_term_liabilities < 0:
-                    self.medium_term_short_term_liabilities = abs(self.medium_term_short_term_liabilities)
-                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    self.medium_term_short_term_liabilities = abs(
+                        self.medium_term_short_term_liabilities
+                    )
+                    print(
+                        "Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
 
-            if self.sourcing == 0 or  self.medium_term_short_term_liabilities ==0:
+            if self.sourcing == 0 or self.medium_term_short_term_liabilities == 0:
                 print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
                 return " "
-       
-            return abs(round((self.medium_term_short_term_liabilities * self.days) / self.sourcing, 2))
 
+            return abs(
+                round(
+                    (self.medium_term_short_term_liabilities * self.days)
+                    / self.sourcing,
+                    2,
+                )
+            )
 
     def net_working_capital_turnover_speed(self) -> float:
         """
         ### Τεκμηρίωση\n
-        ταχύτητα κυκλοφορία καθαρού κεφαλαίου κίνησης είναι ο δικτης 
+        ταχύτητα κυκλοφορία καθαρού κεφαλαίου κίνησης είναι ο δικτης
         οπου Αξιολόγηση, αποτελεσματικότητα του κεφάλαιο κίνησης σε  σχέση με τις πωλητή.
         ### Documentation\n
-        Νet working capital circulation velocity is the divisor 
+        Νet working capital circulation velocity is the divisor
         where Evaluation, efficiency of working capital in relation to the seller.
         Args:
             net_working_capital (float): καθαρό κεφάλαιο κίνησης
@@ -277,18 +326,20 @@ class ActivityRadio:
             if self.net_sales < 0 and self.net_working_capital:
                 if self.net_sales < 0:
                     self.net_sales = abs(self.net_sales)
-                    print("Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    print(
+                        "Ο λογαριασμός average_stock\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
                 if self.net_working_capital < 0:
                     self.net_working_capital = abs(self.net_working_capital)
-                    print("Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό")
+                    print(
+                        "Ο λογαριασμός cost_of_goods_sold\nείχε αρνητικό πρόσημο και\nαυτόματα μετατράπηκε σε θετικό"
+                    )
 
-            if self.net_sales == 0 or  self.net_working_capital ==0:
+            if self.net_sales == 0 or self.net_working_capital == 0:
                 print("Αυτη η πραξη δεν μπορει να πραγματοποιηθεί ['0/0', 'numbers/0']")
                 return " "
-       
+
             return abs(round(self.net_sales / self.net_working_capital, 2))
-
-
 
     def turnover_speed_total_assets(self) -> float:
         """
@@ -370,7 +421,7 @@ class ActivityRadio:
                 float: traffic_speed_net_profit
         """
         return round(self.net_sales / self.net_profit, 2)
-    
+
 
 # if __name__ == "__main__":
 #     run = ActivityRadio(cost_of_goods_sold= -500, average_stock = 8000, sale_on_credit  = 10_000, average_requirement = 5000 )

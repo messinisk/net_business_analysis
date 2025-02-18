@@ -31,6 +31,7 @@ library liquidity_radios :
         +speed_of_circulating_capital_employed -> float
         +traffic_speed_Net_Profit -> float
 """
+
 __title__ = "Library: Liquidity Ratios"
 __description__ = """### Documentation\n
 This library provides a `Gross Margin` class that encapsulates accounting-related calculations.\n
@@ -52,6 +53,4 @@ __maintainer_email__ = "maintainer@example.com"
 __license__ = "MIT"
 __url__ = "https://github.com/your-repo-url"
 __package__ = "liquidity_ratios"
-__dependencies__ : list[str] = []
-
-
+__dependencies__: list[str] = []

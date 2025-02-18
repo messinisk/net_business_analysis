@@ -38,4 +38,3 @@ library profitability_radios :
                 +asset_turnover_velocity-> float
                 +return_total_capital_employed-> float
 """
-

@@ -1,5 +1,6 @@
 class MetaData:
-    """## Return:  meta data """
+    """## Return:  meta data"""
+
     net_profit = """[Τεκμηρίωση net_profit]
 [Στις επιχειρήσεις, το καθαρό εισόδημα ή τα καθαρά κέρδη είναι τα έσοδα μείον το κόστος πωληθέντων αγαθών, τα έξοδα και τους φόρους για μια λογιστική χρήση.]
 [Documentation net_profit]
@@ -10,7 +11,7 @@ class MetaData:
 [Documentation net_sales]
 [The value of sales of an economic unit after deduction of taxes (e.g. VAT), returns, discounts and the value of damaged products]
 """
-    fixed_asset  = """[Τεκμηρίωση assets]
+    fixed_asset = """[Τεκμηρίωση assets]
 [Εξετάζοντας τα περιουσιακά στοιχεία του Ενεργητικού διαπιστώνουμε ότι:]
 [Μερικά από αυτά, όπως είναι οικόπεδα, κτίρια, μηχανήματα, μεταφορικά μέσα, έπιπλα και λοιπός εξοπλισμός, διπλώματα ευρεσιτεχνίας κτλ.]
 [αποτελούν μόνιμο εξοπλισμό της επιχείρησης και προορίζονται να την εξυπηρετούν για χρονικό διάστημα μεγαλύτερο του έτους. Αυτά λέγονται Πάγια.]
@@ -28,20 +29,17 @@ class MetaData:
 """
 
 
-
-
-
 class EquityCapital:
     """
     ### Τεκμηρίωση\n
     Η κλάση Μικτό περιθώριο,  ενσωματώνει όλους   εκείνους τους λογαριασμούς που χρησιμοποιούν οι μέθοδοι του.\n
     Αυτή οι λογαριασμοί  Αρχικοποιούνται ως πραγματική κάτι συνηθισμένο στον τρόπο απεικόνισης στην λογιστική.\n
     Για να   αντιμετωπίσουμε πιθανό σφάλματα Division Error που αφορά διαίρεση με το 0  αρχικοποιούμε  σε τιμή ίση με  1.0\n
-    και ταυτόχρονα αποκτάμε προαιρετική χρήση μεθόδων άλλα και  επιλογή ποια ορίσματα θέλουμε.\n\n  
+    και ταυτόχρονα αποκτάμε προαιρετική χρήση μεθόδων άλλα και  επιλογή ποια ορίσματα θέλουμε.\n\n
     ### Documentation\n
-    The Gross Margin class encapsulates all those accounts that its methods use.\n 
-    This accounts are initialized as real something common in the way of representation in accounting.\n 
-    To deal with possible Division Error errors related to division by 0 we initialize to a value equal to 1.0\n 
+    The Gross Margin class encapsulates all those accounts that its methods use.\n
+    This accounts are initialized as real something common in the way of representation in accounting.\n
+    To deal with possible Division Error errors related to division by 0 we initialize to a value equal to 1.0\n
     and at the same time get optional use of other methods and choice of which arguments we want.
     method :
         +net_profit_margin
@@ -50,72 +48,76 @@ class EquityCapital:
         +equity_multiplier
         +Restatement_equity_multiplier
     """
-    def __init__(self,
-        net_profits:float=1.0,
-        net_sales: float=1.0,
-        fixed_asset: float=1.0,
-        equity_capital: float=1.0
-        )->None:
+
+    def __init__(
+        self,
+        net_profits: float = 1.0,
+        net_sales: float = 1.0,
+        fixed_asset: float = 1.0,
+        equity_capital: float = 1.0,
+    ) -> None:
         self.net_profits = net_profits
-        self.net_sales =net_sales
+        self.net_sales = net_sales
         self.fixed_asset = fixed_asset
         self.equity_capital = equity_capital
 
-    
-    def net_profit_margin(self)->float:
+    def net_profit_margin(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η μέθοδος καθαρό περιθώριο κέρδους, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n 
+        Η μέθοδος καθαρό περιθώριο κέρδους, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n
         ### Documentation\n
         The net profit marginmethod inherits Accounts from the EquityCapital class.
         ### Returns: round((self.net_profits/self.net_sales), 2)
         """
-        return round((self.net_profits/self.net_sales), 2)
+        return round((self.net_profits / self.net_sales), 2)
 
-    def asset_turnover_velocity(self)->float:
+    def asset_turnover_velocity(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η μέθοδος ταχυτητα κυκλοφοριας ενεργητικου, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n 
+        Η μέθοδος ταχυτητα κυκλοφοριας ενεργητικου, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n
         ### Documentation\n
         The asset turnover velocity inherits Accounts from the EquityCapital class.
         ### Returns:round((self.net_sales/self.asset), 2)
         """
-        return round((self.net_sales/self.asset), 2)
+        return round((self.net_sales / self.asset), 2)
 
-    def financial_leverage(self)->float:
+    def financial_leverage(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η χρηματοοικονομικη μόχλευση, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n 
+        Η χρηματοοικονομικη μόχλευση, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n
         ### Documentation\n
         The financial leverage method inherits Accounts from the EquityCapital class.
         ### Returns: round((self.asset/self.equity_capital), 2)
         """
-        return round((self.fixed_asset/self.equity_capital), 2)
+        return round((self.fixed_asset / self.equity_capital), 2)
 
-    def equity_multiplier (self)->float:
+    def equity_multiplier(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Ο πολλαπλασιαστή ιδίων κεφαλαίων, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n 
+        Ο πολλαπλασιαστή ιδίων κεφαλαίων, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n
         Η μεθοδος απεικονίζει το άθροισμα των γινομενων τριων συναρτησεων.\n
         ### Documentation\n
         The equity multiplier  method inherits Accounts from the EquityCapital class.
         The method displays the sum of the products of three functions.\n
         ### Returns: round((self.net_profit_margin()*self.asset_turnover_velocity()*self.financial_leverage()), 2)
         """
-        return round((self.net_profit_margin()*self.asset_turnover_velocity()*self.financial_leverage()), 2)
-    
-    def restatement_equity_multiplier(self)-> float:
+        return round(
+            (
+                self.net_profit_margin()
+                * self.asset_turnover_velocity()
+                * self.financial_leverage()
+            ),
+            2,
+        )
+
+    def restatement_equity_multiplier(self) -> float:
         """
         ### Τεκμηρίωση\n
-        Η επαναδιατύπωσης πολλαπλασιαστή ιδίων κεφαλαίων, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n 
+        Η επαναδιατύπωσης πολλαπλασιαστή ιδίων κεφαλαίων, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση\n
         Η μεθοδος απεικονίζει το αποτέλεσμα διαίρεσης του μεγεθους καθαρα κερδη / ιδια κεφαλαια .\n
         ### Documentation\n
         The equity multiplier  method inherits Accounts from the EquityCapital class.
         The method depicts the result of dividing the size net profit / equity.\n
         ### Returns: round((self.net_profits/self.equity_capital), 2)
         """
-        return round((self.net_profits/self.equity_capital), 2)
-
-
-
-
+        return round((self.net_profits / self.equity_capital), 2)
