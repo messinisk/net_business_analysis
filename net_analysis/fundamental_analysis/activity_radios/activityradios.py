@@ -372,6 +372,6 @@ class ActivityRadio:
         return round(self.net_sales / self.net_profit, 2)
     
 
-if __name__ == "__main__":
-    run = ActivityRadio(cost_of_goods_sold= -500, average_stock = 8000, sale_on_credit  = 10_000, average_requirement = 5000 )
-    print(run.business_cycle())
+# if __name__ == "__main__":
+#     run = ActivityRadio(cost_of_goods_sold= -500, average_stock = 8000, sale_on_credit  = 10_000, average_requirement = 5000 )
+#     print(run.business_cycle())

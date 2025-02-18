@@ -5,9 +5,12 @@
 
 
 
-
-
-
+# test_equity_capital.py
+# test_financial_leverage.py
+# test_grossprofit.py
+# test_liquidityradios.py
+# test_maintenanceandrepair.py
+# test_total_capital_employed.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
