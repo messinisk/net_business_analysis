@@ -63,38 +63,7 @@ class capital_structure:
             return self.short_term_foreign_funds
 
     def total_capital(self) -> float:
-        import math
-
-        epsilon = 1e-9
-        # δουλεβει
-        if (
-            math.isclose(self.short_term_foreign_funds, 1.0, abs_tol=epsilon)
-            and math.isclose(self.long_term_foreign_capital, 1.0, abs_tol=epsilon)
-            and math.isclose(self.self_foreign, 1.0, abs_tol=epsilon)
-        ):
-            return 0.0
-        # δουλεβει
-        if (
-            self.short_term_foreign_funds > 1.0
-            and self.long_term_foreign_capital > 1.0
-            and self.self_foreign > 1.0
-        ):
-            return sum(
-                [
-                    self.self_foreign,
-                    self.short_term_foreign_funds,
-                    self.long_term_foreign_capital,
-                ]
-            )
-        # δουλεβει
-        if math.isclose(self.long_term_foreign_capital, 1.0, abs_tol=epsilon):
-            return sum([self.short_term_foreign_funds, self.self_foreign])
-        # δουλεβει
-        if math.isclose(self.short_term_foreign_funds, 1.0, abs_tol=epsilon):
-            return sum([self.long_term_foreign_capital + self.self_foreign])
-        # δουλεβει
-        if math.isclose(self.self_foreign, 1.0, abs_tol=epsilon):
-            return sum([self.long_term_foreign_capital + self.short_term_foreign_funds])
+        return sum([self.long_term_foreign_capital + self.short_term_foreign_funds])
 
     def leverage_tax_reduction(self):
         if self.short_term_foreign_funds > 1.0 and self.interest_rate > 0:
