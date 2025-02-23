@@ -8,15 +8,10 @@ dependencies = []
 
 
 
-[tool.uv.workspace]
-members = ["net_analysis"]
-
-
-
 [pytest]
 minversion = "8.3.4"
-pythonpath = net_analysis/
-testpaths = testing/
+pythonpath = "net_analysis/"
+testpaths = "testing/"
 
 [bandit]
-target = net_analysis/
+target = "net_analysis/"
