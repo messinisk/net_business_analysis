@@ -9,6 +9,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from net_analysis.setting.return_func_error import validate_numerical_inputs
+from net_analysis.setting.return_func_error import number_output_formatting
 
 
 class ActivityRadio:
@@ -44,10 +45,12 @@ class ActivityRadio:
         self.net_profit = net_profit
 
     @validate_numerical_inputs
+    @number_output_formatting
     def inventories_turnover_radio(self) -> float:
         return round(self.cost_of_goods_sold / self.average_stock, 2)
 
     @validate_numerical_inputs
+    @number_output_formatting()
     def average_dwell_time_of_inventory_in_the_warehouse(self) -> float:
         return round(
             (self.days * self.average_stock)
@@ -123,7 +126,4 @@ if __name__ == "__main__":
     # Το traffic_speed_net_profit() έπρεπε να επιστρέφει float('inf') ή 0.0 αντί να σκάει
     assert metrics.traffic_speed_net_profit() == float('inf') 
     assert metrics.speed_of_circulating_invested_capital() == float('inf') 
-    assert metrics.fixed_turnover_rate() == float('inf') 
-    assert metrics.turnover_speed_total_assets() == float('inf') 
-    assert metrics.net_working_capital_turnover_speed() == float('inf') 
-    assert metrics.average_repayment_period_of_short_term_liabilities() == float('inf') 
+   

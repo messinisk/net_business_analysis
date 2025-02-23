@@ -10,3 +10,12 @@ dependencies = []
 
 [tool.uv.workspace]
 members = ["net_analysis"]
+
+[flake8]
+ignore = E501
+
+[pytest]
+minversion = 8.3.4
+pythonpath = net_business_analysis
+testpaths = 
+    testing
