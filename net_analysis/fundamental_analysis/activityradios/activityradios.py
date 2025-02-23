@@ -62,7 +62,9 @@ class ActivityRadio:
     def speed_of_collection_of_receivables(self) -> float:
         return round(self.sale_on_credit / self.average_requirement, 2)
 
+    
     @validate_numerical_inputs
+    @number_output_formatting
     def average_demand_period(self) -> float:
         return round(
             (self.days * self.average_requirement)
