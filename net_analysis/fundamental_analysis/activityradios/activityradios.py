@@ -58,7 +58,7 @@ class ActivityRadio:
             self.cost_of_goods_sold, 2)
 
     @validate_numerical_inputs
-     @number_output_formatting
+    @number_output_formatting
     def speed_of_collection_of_receivables(self) -> float:
         return round(self.sale_on_credit / self.average_requirement, 2)
 
