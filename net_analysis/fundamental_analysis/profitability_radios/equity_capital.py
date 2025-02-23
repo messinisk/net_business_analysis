@@ -5,6 +5,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 from net_analysis.setting.return_func_error import validate_numerical_inputs
+from net_analysis.setting.return_func_error import number_output_formatting
 
 
 class EquityCapital:
@@ -36,19 +37,24 @@ class EquityCapital:
         self.fixed_asset = fixed_asset
         self.equity_capital = equity_capital
 
+
     @validate_numerical_inputs
+    @number_output_formatting
     def net_profit_margin(self) -> float:
         return round((self.net_profits / self.net_sales), 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def asset_turnover_velocity(self) -> float:
         return round((self.net_sales / self.fixed_asset), 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def financial_leverage(self) -> float:
         return round((self.fixed_asset / self.equity_capital), 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def equity_multiplier(self) -> float:
         return round(
             (
@@ -60,5 +66,6 @@ class EquityCapital:
         )
 
     @validate_numerical_inputs
+    @number_output_formatting
     def restatement_equity_multiplier(self) -> float:
         return round((self.net_profits / self.equity_capital), 2)

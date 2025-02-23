@@ -3,6 +3,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from net_analysis.setting.return_func_error import validate_numerical_inputs
+from net_analysis.setting.return_func_error import number_output_formatting
 
 
 class ReturnTotalCapitalEmployed:
@@ -49,6 +50,7 @@ class ReturnTotalCapitalEmployed:
         self.net_sales = net_sales
 
     @validate_numerical_inputs
+    @number_output_formatting
     def value_total_capital(self) -> float:
         """
         ### Τεκμηρίωση\n
@@ -66,6 +68,7 @@ class ReturnTotalCapitalEmployed:
         )
 
     @validate_numerical_inputs
+    @number_output_formatting
     def net_profit_margin(self) -> float:
         """
         ### Τεκμηρίωση\n
@@ -80,6 +83,7 @@ class ReturnTotalCapitalEmployed:
         )
 
     @validate_numerical_inputs
+    @number_output_formatting
     def asset_turnover_velocity(self) -> float:
         """
         ### Τεκμηρίωση\n
@@ -91,6 +95,7 @@ class ReturnTotalCapitalEmployed:
         return round((self.net_sales / self.total_capital), 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def return_total_capital_employed(self) -> float:
         """
         ### Τεκμηρίωση\n

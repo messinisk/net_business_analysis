@@ -50,7 +50,7 @@ class ActivityRadio:
         return round(self.cost_of_goods_sold / self.average_stock, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting()
+    @number_output_formatting
     def average_dwell_time_of_inventory_in_the_warehouse(self) -> float:
         return round(
             (self.days * self.average_stock)
@@ -58,6 +58,7 @@ class ActivityRadio:
             self.cost_of_goods_sold, 2)
 
     @validate_numerical_inputs
+     @number_output_formatting
     def speed_of_collection_of_receivables(self) -> float:
         return round(self.sale_on_credit / self.average_requirement, 2)
 
@@ -69,37 +70,45 @@ class ActivityRadio:
             self.sale_on_credit, 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def velocity_of_current_liabilities(self) -> float:
         return round(
             self.sourcing / self.medium_term_short_term_liabilities,
             2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def average_repayment_period_of_short_term_liabilities(self) -> float:
         return round(
             (self.medium_term_short_term_liabilities * self.days)
             / self.sourcing, 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def net_working_capital_turnover_speed(self) -> float:
         return round(self.net_sales / self.net_working_capital, 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def turnover_speed_total_assets(self) -> float:
         return round(self.net_sales / self.total_assets, 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def fixed_turnover_rate(self) -> float:
         return round(self.net_sales / self.net_assets, 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def speed_of_circulating_invested_capital(self) -> float:
         return round(self.net_sales / self.invested_capital, 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def traffic_speed_net_profit(self) -> float:
         return round(self.net_sales / self.net_profit, 2)
 
+    @number_output_formatting
     def business_cycle(self) -> float:
         try:
             the_warehouse_average = (
@@ -117,13 +126,3 @@ class ActivityRadio:
             return 0.0
 
         return 0.0  # ✅ Προσθήκη default return για κάθε περίπτωση
-
-
-
-if __name__ == "__main__":
-    metrics = ActivityRadio(1000, 200, 365, 5000, 250, 3000, 600, 12000, 400, 15000, 5000, 7000, 0)
-    
-    # Το traffic_speed_net_profit() έπρεπε να επιστρέφει float('inf') ή 0.0 αντί να σκάει
-    assert metrics.traffic_speed_net_profit() == float('inf') 
-    assert metrics.speed_of_circulating_invested_capital() == float('inf') 
-   

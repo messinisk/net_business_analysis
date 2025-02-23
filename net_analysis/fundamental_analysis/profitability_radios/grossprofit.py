@@ -2,6 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from net_analysis.setting.return_func_error import validate_numerical_inputs
+from net_analysis.setting.return_func_error import number_output_formatting
 
 
 class GrossMargin:
@@ -40,6 +41,7 @@ class GrossMargin:
         self.total_of_these_funds = total_of_these_funds
 
     @validate_numerical_inputs
+    @number_output_formatting
     def gross_profit_margin(self) -> float:
         """
         ### Τεκμηρίωση\n
@@ -60,6 +62,7 @@ class GrossMargin:
         return round((self.gross_operating_profit / self.net_sales), 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def net_profit_margin(self) -> float:
         """
         ### Τεκμηρίωση\n
@@ -84,6 +87,7 @@ class GrossMargin:
         return round((self.net_operating_profit / self.net_sales), 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def net_profits(self) -> float:
         """
         Τεκμηρίωση\n
@@ -112,6 +116,7 @@ class GrossMargin:
         return round((self.sales * self.net_profit_margin()), 2)
 
     @validate_numerical_inputs
+    @number_output_formatting
     def return_on_equity(self) -> float:
         """
         ### Τεκμηρίωση\n

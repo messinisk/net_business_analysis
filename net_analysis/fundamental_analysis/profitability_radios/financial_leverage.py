@@ -4,6 +4,7 @@ import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from net_analysis.setting.return_func_error import validate_numerical_inputs
+from net_analysis.setting.return_func_error import number_output_formatting
 
 
 class FinancialLeverageRadio:
@@ -47,6 +48,7 @@ class FinancialLeverageRadio:
         self.equity_capital = equity_capital
 
     @validate_numerical_inputs
+    @number_output_formatting
     def financial_leverage(self):
         """
         ### Τεκμηρίωση\n
