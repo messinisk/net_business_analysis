@@ -19,3 +19,6 @@ minversion = 8.3.4
 pythonpath = net_business_analysis
 testpaths = 
     testing
+
+[bandit]
+target = net_analysis/
