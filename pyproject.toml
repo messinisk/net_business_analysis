@@ -16,8 +16,7 @@ members = ["net_analysis"]
 [pytest]
 minversion = "8.3.4"
 pythonpath = net_analysis/
-testpaths = 
-    testing
+testpaths = testing/
 
 [bandit]
 target = net_analysis/
