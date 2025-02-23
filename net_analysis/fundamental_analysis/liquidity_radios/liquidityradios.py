@@ -7,7 +7,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from net_analysis.setting.return_func_error import validate_numerical_inputs
-from net_analysis.setting.return_func_error import number_output_formatting
+from net_analysis.setting.number_output_formatting import display_locale
 
 
 
@@ -59,7 +59,7 @@ class LiquidityRadios:
         self.requirements = requirements
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def current_radio(self) -> float:
         """Αριθμοδείκτης Γενικής
         ή έμμεσης ρευστότητας
@@ -67,13 +67,13 @@ class LiquidityRadios:
         return round(self.circulating_assets / self.short_term_liabilities, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def cash_radio(self) -> float:
         """Αριθμοδείκτης ταμειακής ρευστότητας"""
         return round(self.available_cash / self.short_term_liabilities, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def defensive_interval(self) -> float:
         """Το αμυντικό διάστημα"""
         return round(
@@ -83,13 +83,13 @@ class LiquidityRadios:
         )
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def net_working_capital(self) -> float:
         """καθαρο κεφαλαιο κινησης"""
         return round(self.short_term_liabilities / self.circulating_assets, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def acid_test_radio(self) -> float:
         """Άμεση ρευστότητα"""
         return round(
@@ -99,7 +99,7 @@ class LiquidityRadios:
         )
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def quick_radio(self) -> float:
         """Άμεση ρευστότητα"""
         return round(

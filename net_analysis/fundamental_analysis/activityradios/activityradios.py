@@ -9,7 +9,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from net_analysis.setting.return_func_error import validate_numerical_inputs
-from net_analysis.setting.return_func_error import number_output_formatting
+from net_analysis.setting.number_output_formatting import display_locale
 
 
 class ActivityRadio:
@@ -45,12 +45,12 @@ class ActivityRadio:
         self.net_profit = net_profit
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def inventories_turnover_radio(self) -> float:
         return round(self.cost_of_goods_sold / self.average_stock, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def average_dwell_time_of_inventory_in_the_warehouse(self) -> float:
         return round(
             (self.days * self.average_stock)
@@ -58,13 +58,13 @@ class ActivityRadio:
             self.cost_of_goods_sold, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def speed_of_collection_of_receivables(self) -> float:
         return round(self.sale_on_credit / self.average_requirement, 2)
 
     
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def average_demand_period(self) -> float:
         return round(
             (self.days * self.average_requirement)
@@ -72,45 +72,45 @@ class ActivityRadio:
             self.sale_on_credit, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def velocity_of_current_liabilities(self) -> float:
         return round(
             self.sourcing / self.medium_term_short_term_liabilities,
             2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def average_repayment_period_of_short_term_liabilities(self) -> float:
         return round(
             (self.medium_term_short_term_liabilities * self.days)
             / self.sourcing, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def net_working_capital_turnover_speed(self) -> float:
         return round(self.net_sales / self.net_working_capital, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def turnover_speed_total_assets(self) -> float:
         return round(self.net_sales / self.total_assets, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def fixed_turnover_rate(self) -> float:
         return round(self.net_sales / self.net_assets, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def speed_of_circulating_invested_capital(self) -> float:
         return round(self.net_sales / self.invested_capital, 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def traffic_speed_net_profit(self) -> float:
         return round(self.net_sales / self.net_profit, 2)
 
-    @number_output_formatting
+    @display_locale
     def business_cycle(self) -> float:
         try:
             the_warehouse_average = (

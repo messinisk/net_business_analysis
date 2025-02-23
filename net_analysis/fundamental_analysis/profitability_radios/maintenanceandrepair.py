@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from net_analysis.setting.return_func_error import validate_numerical_inputs
-from net_analysis.setting.return_func_error import number_output_formatting
+from net_analysis.setting.number_output_formatting import display_locale
 
 
 class MaintenanceRepair:
@@ -46,7 +46,7 @@ class MaintenanceRepair:
         self.cost_of_goods_sold = cost_of_goods_sold
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def maintenance_and_repair_costs_for_fixed_assets(self):
         """
         ### Τεκμηρίωση\n
@@ -60,7 +60,7 @@ class MaintenanceRepair:
         )
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def maintenance_and_repair_costs_to_sales(self):
         """
         ### Τεκμηρίωση\n
@@ -72,7 +72,7 @@ class MaintenanceRepair:
         return round((self.maintenance_and_repair_costs / self.net_sales), 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def depreciation_of_fixed_assets(self):
         """
         ### Τεκμηρίωση\n
@@ -86,7 +86,7 @@ class MaintenanceRepair:
         )
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def depreciation_to_net_sales(self):
         """
         ### Τεκμηρίωση\n
@@ -98,7 +98,7 @@ class MaintenanceRepair:
         return round((self.depreciation_of_use / self.net_sales), 2)
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def operating_expenses(self):
         """
         ### Τεκμηρίωση\n
@@ -116,7 +116,7 @@ class MaintenanceRepair:
         )
 
     @validate_numerical_inputs
-    @number_output_formatting
+    @display_locale
     def operating_expenses_to_sales(self):
         """
         ### Τεκμηρίωση\n
