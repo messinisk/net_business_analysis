@@ -148,16 +148,3 @@ class MetaReturnTotalCapitalEmployed:
 [such as cash, investments, property and equipment. It is an important indicator of financial status and financial capacity.]
 """
 
-
-
-
-
-# def __str__(self):
-#     attributes = [
-#         self.circulating_assets,
-#         self.short_term_liabilities,
-#         self.available_cash,
-#         self.forecast_daily_expenses,
-#         self.requirements,
-#     ]
-#     return "\n\n".join(map(str, attributes))
