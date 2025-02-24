@@ -1,15 +1,14 @@
-#  This  here modules library 
+># This is Documentation Args 
 
-- Args
-    - [Documentation cost_of_goods_sold]
-[A key factor affecting the mixed results for the year is the cost of inventory sold. ]
-[Cost of sales includes the difference between 'turnover' and 'gross operating results`]"""
-    -[Documentation requirements]
-[Requirements refer to the necessary resources, funds, or goods needed to achieve a goal, execute a project, or maintain a business's operations.]
-[In financial terms, it often includes receivables or other obligations linked to the operating cycle]
-    - [Documentation forecast_daily_expenses]
-[refers to the estimation or prediction of daily spending based on historical data, spending patterns, and expected future needs.]
-[It typically involves analyzing past expenses, categorizing expenditures, and calculating averages or trends to anticipate future daily costs.]
+- Documentation
+
+    ## [cost_of_goods_sold]
+            [A key factor affecting the mixed results for the year is the cost of inventory sold. ]
+            [Cost of sales includes the difference between 'turnover' and 'gross operating results`]
+    ## [requirements]
+            [Requirements refer to the necessary resources, funds, or goods needed to achieve a goal, execute a project, or maintain a business's operations.] [In financial terms, it often includes receivables or other obligations linked to the operating cycle]
+    ## [forecast_daily_expenses]
+        [refers to the estimation or prediction of daily spending based on historical data, spending patterns, and expected future needs.] [It typically involves analyzing past expenses, categorizing expenditures, and calculating averages or trends to anticipate future daily costs.]
     - [Documentation average_stock]
 [The maximum stock of a particular day in the warehouse.]
     - [Documentation available_cash]
@@ -47,7 +46,7 @@ Current Assets are the assets of the Asset that are intended to change position 
 [According to the claim literature they can appear in third party and personal benefits credit provision. As a result of the above, the average requirements is the average of the requirements of a certain period.]
     - [Documentation sale_on_credit]\n[A credit sales document is a document - invoice - receipt issued by a business when they buy products or services from it, indicating that they will be paid in the future in installments.]
 [That is, it is a type of credit that it provides to its customers, in order to make it easier for them not to pay the money required immediately, but in installments, in the future.]
-    - [Documentation average_stock]
+    ## [Documentation average_stock]
 [The average inventory is half of the maximum inventory ( [production per day - demand per day] x production period in days).]
     ## [Documentation net_profit]
         [In business, net income or net profit is revenue minus cost of goods sold, expenses, and taxes for an accounting year.]
