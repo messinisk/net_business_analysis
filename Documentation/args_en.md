@@ -1,12 +1,12 @@
 ># This is Documentation Args 
 
 
-## cost_of_goods_sold
-    A key factor affecting the mixed results for the year is the cost of inventory sold. Cost of sales includes the difference between 'turnover' and 'gross operating results`.
-## requirements
-    Requirements refer to the necessary resources, funds, or goods needed to achieve a goal, execute a project, or maintain a business's operations. In financial terms, it often includes receivables or other obligations linked to the operating cycle
-## forecast_daily_expenses
-    [refers to the estimation or prediction of daily spending based on historical data, spending patterns, and expected future needs.] [It typically involves analyzing past expenses, categorizing expenditures, and calculating averages or trends to anticipate future daily costs.]
+-  cost_of_goods_sold
+    - A key factor affecting the mixed results for the year is the cost of inventory sold. Cost of sales includes the difference between 'turnover' and 'gross operating results`.
+- requirements
+    - Requirements refer to the necessary resources, funds, or goods needed to achieve a goal, execute a project, or maintain a business's operations. In financial terms, it often includes receivables or other obligations linked to the operating cycle
+- forecast_daily_expenses
+    - [refers to the estimation or prediction of daily spending based on historical data, spending patterns, and expected future needs.] [It typically involves analyzing past expenses, categorizing expenditures, and calculating averages or trends to anticipate future daily costs.]
     - [Documentation average_stock]
 [The maximum stock of a particular day in the warehouse.]
     - [Documentation available_cash]
