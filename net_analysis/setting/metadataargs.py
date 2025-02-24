@@ -1,176 +1,9 @@
-class MetaArgs:
-    """Documentation args"""
-    
-    cost_of_goods_sold = """[Τεκμηρίωση cost_of_goods_sold]
-[Βασικό στοιχείο που επηρεάζει τα μικτά αποτελέσματα της χρήσης είναι το κόστος των πωληθέντων αποθεμάτων.]
-[Το κόστος πωλήσεων περιλαμβάνει τη διαφορά μεταξύ των κονδυλίων «κύκλος εργασιών» και «μικτά αποτελέσματα εκμεταλλεύσεως».   ]\n[Documentation cost_of_goods_sold]
-[A key factor affecting the mixed results for the year is the cost of inventory sold. ]
-[Cost of sales includes the difference between 'turnover' and 'gross operating results]'."""
-    average_stock = """[Τεκμηρίωση average_stock]
-[Το μέσο απόθεμα ανέρχεται στο μισό του μέγιστου αποθέματος ( [παραγωγή ανά ημέρα - ζήτηση ανά ημέρα] χ περίοδος παραγωγής σε ημέρες).]
-[Documentation average_stock]\n[The average inventory is half of the maximum inventory ( [production per day - demand per day] x production period in days).          ]
-"""
-    sale_on_credit = """[Τεκμηρίωση sale_on_credit]\n[Παραστατικό πώλησης επί πιστώσει είναι ένα παραστατικό - τιμολόγιο - απόδειξη που εκδίδει μία επιχείρηση όταν αγοράζουν από αυτήν προϊόντα ή υπηρεσίες, που υποδηλώνει ότι θα πληρωθούν στο μέλλον με δόσεις.]
-[Είναι δηλαδή ένα είδος πίστωσης που παρέχει στους πελάτες της, ώστε να τους διευκολύνει να μην πληρώσουν άμεσα τα χρήματα που απαιτούνται, αλλά με δόσεις, στο μέλλον. ]
-[Documentation sale_on_credit]\n[A credit sales document is a document - invoice - receipt issued by a business when they buy products or services from it, indicating that they will be paid in the future in installments.]
-[That is, it is a type of credit that it provides to its customers, in order to make it easier for them not to pay the money required immediately, but in installments, in the future.]
-"""
-    average_requirement = """[Τεκμηρίωση average_requirement]\n[Οι απαιτήσεις γενικά δημιουργούνται μέσω των πωλήσεων αποθεμάτων μιας επιχείρησης,]
-[παρακολουθούνται μέσω των λογαριασμών όπως  Πελάτες αλλά κύριος από Γραμμάτια Εισπρακτέα, επιταγές Εισπρακτέες που διαθέτουν μια προκαθορισμένη προθεσμία εξόφλησής.]
-[Συμφωνά με την βιβλιογραφία απαίτησης μπορούν να εμφανίζονται και σε προς τρίτους και όσο  και παροχές προσωπικού παροχή πίστωσης.]
-[Κατά συνέπια τον παραπάνω το μεσώ απαιτήσεις είναι Μέσος Όρος των   απαιτήσεων μια συγκεκριμένης περιόδου. ]
-[Documentation average_requirement]
-[Receivables are generally created through a business's sales of inventory, tracked through accounts such as Accounts Payable but principal from Notes Receivable, checks Receivable that have a predetermined maturity date.]
-[According to the claim literature they can appear in third party and personal benefits credit provision. As a result of the above, the average requirements is the average of the requirements of a certain period.]
-"""
-    medium_term_short_term_liabilities = """[Τεκμηρίωση medium_term_short_term_liabilities]
-[Βραχυπρόθεσμες υποχρεώσεις είναι εκείνες για τις ποίες η προθεσμία εξοφλήσεώς τους λήγει μέχρι το τέλος της επόμενης χρήσεως και Αποτελούν Έξοδο για την επιχείρηση.]
-[Κατά συνέπια τον παραπάνω  εδώ αναφερόμαστε Μέσος Όρος των Βραχυπρόθεσμων υποχρεώσεων  μια συγκεκριμένης περιόδου.]
-[Documentation medium_term_short_term_liabilities]
-[Short-term liabilities are those for which their repayment term expires by the end of the next fiscal year and constitute an Outgo for the business.]
-[As a result of the above, here we refer to the Average Term of the Short-term obligations of a specific period.]
-"""
-    sourcing = """[Τεκμηρίωση sourcing]
-[Αγορές που περιλαμβάνονται όπως αυτές αιτημάτων προϊόντων για μεταπώληση, άλλα και για παραγωγή σε ημιτελών προϊόντων, πρώτες ύλες , βοηθητικές ύλες.]
-[Documentation sourcing]
-[Purchases included such as those of product requests for resale, others and for production of unfinished products, raw materials, auxiliary materials.]
-"""
-    net_working_capital = """[Τεκμηρίωση net_working_capital]
-[Καθαρό κεφάλαιο κίνησης είναι η διαφορά ανάμεσα στο κυκλοφορούν Ενεργητικό και τις βραχυπρόθεσμες Υποχρεώσεις]
-[Documentation net_working_capital]
-[Net working capital is the difference between current Assets and current Liabilities]
-"""
-    net_sales = """[Τεκμηρίωση net_sales]
-[Η αξία των πωλήσεων μιας οικονομικής μονάδας μετά την αφαίρεση των φόρων (πχ. ΦΠΑ), των επιστροφών, των εκπτώσεων και της αξίας των κατεστραμμένων προϊόντων]
-[Documentation net_sales]
-[The value of sales of an economic unit after deduction of taxes (e.g. VAT), returns, discounts and the value of damaged products]
-"""
-    total_assets = """[Τεκμηρίωση total_assets]
-[Εξετάζοντας τα περιουσιακά στοιχεία του Ενεργητικού διαπιστώνουμε ότι:]
-[Μερικά από αυτά, όπως είναι οικόπεδα, κτίρια, μηχανήματα, μεταφορικά μέσα, έπιπλα και λοιπός εξοπλισμός, διπλώματα ευρεσιτεχνίας κτλ.]
-[αποτελούν μόνιμο εξοπλισμό της επιχείρησης και προορίζονται να την εξυπηρετούν για χρονικό διάστημα μεγαλύτερο του έτους. Αυτά λέγονται Πάγια.]
-[Άλλα περιουσιακά στοιχεία του Ενεργητικού, όπως είναι πελάτες, πρώτες και βοηθητικές ύλες, έτοιμα, προϊόντα, χρεόγραφα, γραμμάτια εισπρακτέα, ταμείο κτλ.]
-[προορίζονται να υφίστανται συνεχείς μεταβολές στη διάρκεια της χρονιάς, π.χ. η πρώτη ύλη γίνεται έτοιμο προϊόν, το έτοιμο προϊόν μετρητά, τα μετρητά πρώτη ύλη κτλ.]
-[Αυτά λέγονται Κυκλοφορούντα ή Κυκλοφοριακά.]
-[Documentation total_assets]
-[Examining the assets of the Asset we find that:]
-[Some of them, such as land, buildings, machinery, means of transport, furniture and other equipment, patents, etc.]
-[are permanent equipment of the company and are intended to serve it for a period longer than a year. This is what you call a fixed asset]
-[Other assets of the Assets, such as customers, raw and auxiliary materials, finished products, securities, notes receivable, cash, etc.]
-[are intended to undergo continuous changes during the year, e.g. raw material becomes finished product, finished product becomes cash, cash becomes raw material, etc.]
-[This is what you call Current Assets]
-"""
-    net_assets = """[Τεκμηρίωση net_assets]
-[Η καθαρή θέση επιχείρησης, επίσης γνωστή ως καθαρό ενεργητικό ή ίδια κεφάλαια, είναι η διαφορά μεταξύ του συνολικού ενεργητικού μιας εταιρείας και του συνολικού παθητικού της.]
-[Αντιπροσωπεύει το εναπομένον ιδιοκτησιακό μερίδιο στα περιουσιακά στοιχεία της εταιρείας μετά την αφαίρεση όλων των υποχρεώσεών της.]
-[Documentation net_assets]
-[Business equity, also known as net assets or equity, is the difference between a company's total assets and its total liabilities.]
-[It represents the remaining ownership stake in the company's assets after deducting all of its liabilities.]
-"""
-    invested_capital = """[Τεκμηρίωση invested_capital]
-[Είναι το σύνολο των  κεφάλαιον που έχει επενδυθεί στην επιχείρηση, συμπεριλαμβανομένων των ιδίων κεφαλαίων και του μακροπρόθεσμων υποχρεώσεων (χρέος σε τρίτους).]
-[Documentation invested_capital]
-[It is the total amount of capital that has been invested in the business, including equity and long-term liabilities (debt to third parties).]
-"""
-    net_profit = """[Τεκμηρίωση net_profit]
-[Στις επιχειρήσεις, το καθαρό εισόδημα ή τα καθαρά κέρδη είναι τα έσοδα μείον το κόστος πωληθέντων αγαθών, τα έξοδα και τους φόρους για μια λογιστική χρήση.]
-[Documentation net_profit]
-[In business, net income or net profit is revenue minus cost of goods sold, expenses, and taxes for an accounting year.]
-"""
-    circulating_assets = """[Τεκμηρίωση circulating_assets]
-[Κυκλοφορούντα Περιουσιακά στοιχεία αποτελούν τα περιουσιακά στοιχεία του Ενεργητικού που προορίζονται να αλλάζουν θέση και μορφή μία ή περισσότερες φορές μέσα σε μια διαχειριστική χρήση (ένα έτος).]
-[Τα κυκλοφορούντα περιουσιακά στοιχεία διακρίνονται σε:]
-[Αποθέματα υλικών αξιών, όπως εμπορεύματα, έτοιμα προϊόντα, ημιτελή προϊόντα, πρώτες και βοηθητικές ύλες, ανταλλακτικά πάγιων στοιχείων, είδη συσκευασίας κτλ. Βραχυπρόθεσμες απαιτήσεις.]
-[Είναι οι απαιτήσεις που πρόκειται να εισπραχθούν το αργότερο μέχρι το τέλος της επόμενης χρήσης, όπως πελάτες, γραμμάτια εισπρακτέα, χρεώστες διάφοροι κτλ. Χρεόγραφα.]
-[Είναι οι μετοχές Α.Ε. (εφόσον δεν πρόκειται για συμμετοχές), ομολογίες, ομόλογα, έντοκα γραμμάτια του Ελληνικού Δημοσίου, κτλ. Διαθέσιμα.]
-[Είναι τα περιουσιακά στοιχεία που μετατρέπονται σε χρήματα αμέσως και ασφαλώς, δηλαδή μπορούν να χρησιμοποιηθούν για πληρωμές σε οποιαδήποτε στιγμή, όπως μετρητά (ταμείο), καταθέσεις όψεως, ληγμένα τοκομερίδια ομολογιών εισπρακτέα.]
-[Το κόστος πωλήσεων περιλαμβάνει τη διαφορά μεταξύ των κονδυλίων «κύκλος εργασιών» και «μικτά αποτελέσματα εκμεταλλεύσεως».   ]
-[Documentation circulating_assets]
-Current Assets are the assets of the Asset that are intended to change position and one or more times within a management year (one year).]
-[Current assets are divided into: Inventories of tangible assets, such as merchandise, finished products, unfinished products, raw and auxiliary materials, spare parts of fixed assets, types of packaging, etc.]
-[Short term receivables. These are the receivables that are to be collected by the end of the next fiscal year at the latest, such as customers, notes receivable, miscellaneous debtors, etc.]
-[Securities. Are the shares of A.E. (as long as it is not about participations), bonds, bonds, interest-bearing bonds of the Greek State, etc.]
-[available_cash. They are the assets that can be converted into money immediately and safely, that is, they can be used for payments at any time, such as cash (cash), demand deposits, maturing notes receivable.]"""
-
-    short_term_liabilities = """[Τεκμηρίωση short_term_liabilities]
-[Βραχυπρόθεσμες υποχρεώσεις είναι εκείνες για τις ποίες η προθεσμία εξοφλήσεώς τους λήγει μέχρι το τέλος της επόμενης χρήσεως και Αποτελούν Έξοδο για την επιχείρηση.]
-[Documentation short_term_liabilities]
-[Short-term liabilities are those for which their repayment term expires by the end of the next fiscal year and constitute an Outgo for the business.]
-"""
-
-    available_cash = """[Τεκμηρίωση available_cash]
-[Είναι τα περιουσιακά στοιχεία που μετατρέπονται σε χρήματα αμέσως και ασφαλώς, δηλαδή μπορούν να χρησιμοποιηθούν για πληρωμές σε οποιαδήποτε στιγμή, όπως μετρητά (ταμείο), καταθέσεις όψεως, ληγμένα τοκομερίδια ομολογιών εισπρακτέα.]
-[Documentation available_cash]
-[They are the assets that can be converted into money immediately and safely, that is, they can be used for payments at any time, such as cash (cash), demand deposits, maturing notes receivable.]
-"""
-    stock = """[Τεκμηρίωση stock]
-[Το  μέγιστου αποθέματος μια συγκεκριμένης ημέρας στην αποθήκη.]
-[Documentation average_stock]
-[The maximum stock of a particular day in the warehouse).          ]
-"""
-
-    forecast_daily_expenses = """[Τεκμηρίωση forecast_daily_expenses]
-[αναφέρεται στην εκτίμηση ή πρόβλεψη των ημερήσιων δαπανών με βάση τα ιστορικά δεδομένα, πρότυπα των δαπανών, και τις αναμενόμενες μελλοντικές ανάγκες.]
-[Αυτό συνήθως περιλαμβάνει την ανάλυση παρελθόν έξοδα, την κατηγοριοποίηση των δαπανών, και τον υπολογισμό των μέσων όρων ή τάσεις να προβλέψει το μέλλον της καθημερινής κόστος]
-[Documentation forecast_daily_expenses]
-[refers to the estimation or prediction of daily spending based on historical data, spending patterns, and expected future needs.]
-[It typically involves analyzing past expenses, categorizing expenditures, and calculating averages or trends to anticipate future daily costs.]
-"""
-
-    requirements = """[Τεκμηρίωση requirements]
-[Στα οικονομικά και τη λογιστική, ο όρος "requirements" αναφέρεται σε:]
-[Πόρους, κεφάλαια ή αγαθά που είναι απαραίτητα για την επίτευξη ενός στόχου, την υλοποίηση ενός έργου ή τη διατήρηση της λειτουργίας μιας επιχείρησης.]
-[Στην περίπτωση επιχειρήσεων, περιλαμβάνει συχνά χρηματοοικονομικές απαιτήσεις]
-[όπως εισπρακτέα ποσά από πελάτες (accounts receivable) ή άλλα στοιχεία που σχετίζονται με τον κύκλο εργασιών.]
-[Documentation requirements]
-[Requirements refer to the necessary resources, funds, or goods needed to achieve a goal, execute a project, or maintain a business's operations.]
-[In financial terms, it often includes receivables or other obligations linked to the operating cycle]
-"""
-
-class MetaEquityCapital:
-    """## Documentation args"""
-
-    net_profit = """[Τεκμηρίωση net_profit]
-[Στις επιχειρήσεις, το καθαρό εισόδημα ή τα καθαρά κέρδη είναι τα έσοδα μείον το κόστος πωληθέντων αγαθών, τα έξοδα και τους φόρους για μια λογιστική χρήση.]
-[Documentation net_profit]
-[In business, net income or net profit is revenue minus cost of goods sold, expenses, and taxes for an accounting year.]
-"""
-    net_sales = """[Τεκμηρίωση net_sales]
-[Η αξία των πωλήσεων μιας οικονομικής μονάδας μετά την αφαίρεση των φόρων (πχ. ΦΠΑ), των επιστροφών, των εκπτώσεων και της αξίας των κατεστραμμένων προϊόντων]
-[Documentation net_sales]
-[The value of sales of an economic unit after deduction of taxes (e.g. VAT), returns, discounts and the value of damaged products]
-"""
-    fixed_asset = """[Τεκμηρίωση assets]
-[Εξετάζοντας τα περιουσιακά στοιχεία του Ενεργητικού διαπιστώνουμε ότι:]
-[Μερικά από αυτά, όπως είναι οικόπεδα, κτίρια, μηχανήματα, μεταφορικά μέσα, έπιπλα και λοιπός εξοπλισμός, διπλώματα ευρεσιτεχνίας κτλ.]
-[αποτελούν μόνιμο εξοπλισμό της επιχείρησης και προορίζονται να την εξυπηρετούν για χρονικό διάστημα μεγαλύτερο του έτους. Αυτά λέγονται Πάγια.]
-[Documentation assets]
-[Examining the assets of the Asset we find that:]
-[Some of them, such as land, buildings, machinery, means of transport, furniture and other equipment, patents, etc.]
-[are permanent equipment of the company and are intended to serve it for a period longer than a year. This is what you call a fixed asset]
-"""
-    equity_capital = """[Τεκμηρίωση equity_capital]
-[Ίδια κεφάλαια (καθαρή περιουσιακή θέση) είναι ό,τι βρίσκεται στην κυριότητά σας εάν αφαιρέσετε διάφορες χρεώσεις που σας επιβαρύνουν ή τα χρήματα που δανειστήκατε για να το αγοράσετε.]
-[Όταν επενδύετε, ίδια κεφάλαια είναι οι μετοχές που σας παρέχουν ένα μερίδιο κυριότητας σε μια εταιρεία.]
-[Documentation equity_capital]
-[Equity (net worth) is what you own if you subtract various charges you incur or money borrowed to buy.]
-[When you invest, equity is the shares that give you an ownership stake in a company.]
-"""
-
+  
 
 class MetaFinancialLeverageRadio:
     """## Return:  meta data"""
 
-    net_profit = """[Τεκμηρίωση net_profit]
-[Στις επιχειρήσεις, το καθαρό εισόδημα ή τα καθαρά κέρδη είναι τα έσοδα μείον το κόστος πωληθέντων αγαθών, τα έξοδα και τους φόρους για μια λογιστική χρήση.]
-[Documentation net_profit]
-[In business, net income or net profit is revenue minus cost of goods sold, expenses, and taxes for an accounting year.]
-"""
-    net_sales = """[Τεκμηρίωση net_sales]
-[Η αξία των πωλήσεων μιας οικονομικής μονάδας μετά την αφαίρεση των φόρων (πχ. ΦΠΑ), των επιστροφών, των εκπτώσεων και της αξίας των κατεστραμμένων προϊόντων]
-[Documentation net_sales]
-[The value of sales of an economic unit after deduction of taxes (e.g. VAT), returns, discounts and the value of damaged products]
-"""
+
     fixed_asset = """[Τεκμηρίωση assets]
 [Εξετάζοντας τα περιουσιακά στοιχεία του Ενεργητικού διαπιστώνουμε ότι:]
 [Μερικά από αυτά, όπως είναι οικόπεδα, κτίρια, μηχανήματα, μεταφορικά μέσα, έπιπλα και λοιπός εξοπλισμός, διπλώματα ευρεσιτεχνίας κτλ.]
@@ -180,13 +13,7 @@ class MetaFinancialLeverageRadio:
 [Some of them, such as land, buildings, machinery, means of transport, furniture and other equipment, patents, etc.]
 [are permanent equipment of the company and are intended to serve it for a period longer than a year. This is what you call a fixed asset]
 """
-    equity_capital = """[Τεκμηρίωση assets]
-[Ίδια κεφάλαια (καθαρή περιουσιακή θέση) είναι ό,τι βρίσκεται στην κυριότητά σας εάν αφαιρέσετε διάφορες χρεώσεις που σας επιβαρύνουν ή τα χρήματα που δανειστήκατε για να το αγοράσετε.]
-[Όταν επενδύετε, ίδια κεφάλαια είναι οι μετοχές που σας παρέχουν ένα μερίδιο κυριότητας σε μια εταιρεία.]
-[Documentation equity_capital]
-[Equity (net worth) is what you own if you subtract various charges you incur or money borrowed to buy.]
-[When you invest, equity is the shares that give you an ownership stake in a company.]
-"""
+
     interest = """[Τεκμηρίωση interest]
 [Τόκος είναι η αποζημίωση σε χρήματα που είναι υποχρεωμένος να δώσει ο οφειλέτης στο δανειστή για ορισμένη ποσότητα χρηματικού δανείου που πήρε για συγκεκριμένη χρονική περίοδο.]
 [Οι οικονομολόγοι συχνά αναφέρονται στον τόκο ως αμοιβή για τη χρησιμοποίηση χρηματικού κεφαλαίου, ή ως τιμή με την οποία χρεώνεται η χρήση κεφαλαίου. Ο λόγος του τόκου προς το κεφάλαιο λέγεται επιτόκιο. ]
@@ -212,11 +39,7 @@ class MetaGrossMargin:
 [Gross Operating Profit (or Gross Operating Profit) refers to the profit obtained from the operating activities of a business, before deducting operating expenses, interest, taxes and other external costs.]
 [In essence, it is the profit generated by the main activity of the business, without taking into account non-operating activities or non-operating expenses (such as financial expenses or extraordinary expenses).]
 """
-    net_sales = """[Τεκμηρίωση net_sales]
-[Η αξία των πωλήσεων μιας οικονομικής μονάδας μετά την αφαίρεση των φόρων (πχ. ΦΠΑ), των επιστροφών, των εκπτώσεων και της αξίας των κατεστραμμένων προϊόντων]
-[Documentation net_sales]
-[The value of sales of an economic unit after deduction of taxes (e.g. VAT), returns, discounts and the value of damaged products]
-"""
+   
     net_operating_profit = """[Τεκμηρίωση net_operating_profit]
 [Το καθαρό λειτουργικό κέρδος (ή Net Operating Profit – NOP) αναφέρεται στο ποσό του κέρδους που απομένει από τις λειτουργικές δραστηριότητες μιας επιχείρησης αφού αφαιρεθούν όλα τα άμεσα και έμμεσα λειτουργικά έξοδα, εκτός από τους τόκους και τους φόρους.]
 [Δηλαδή, είναι το κέρδος που έχει απομείνει αφού καλυφθούν οι δαπάνες που συνδέονται με την παραγωγή, τη διάθεση και τη διαχείριση των προϊόντων ή υπηρεσιών της επιχείρησης.]
@@ -251,11 +74,7 @@ class MetaMaintenanceRepair:
     """## Return:  meta data
     arithmetical gross profit => Αριθμοδείκτης μικτού κέρδους"""
 
-    cost_of_goods_sold = """[Τεκμηρίωση cost_of_goods_sold]
-[Βασικό στοιχείο που επηρεάζει τα μικτά αποτελέσματα της χρήσης είναι το κόστος των πωληθέντων αποθεμάτων.]
-[Το κόστος πωλήσεων περιλαμβάνει τη διαφορά μεταξύ των κονδυλίων «κύκλος εργασιών» και «μικτά αποτελέσματα εκμεταλλεύσεως».   ]\n[Documentation cost_of_goods_sold]
-[A key factor affecting the mixed results for the year is the cost of inventory sold. ]
-[Cost of sales includes the difference between 'turnover' and 'gross operating results]'."""
+
     net_sales = """[Τεκμηρίωση net_sales]
 [Η αξία των πωλήσεων μιας οικονομικής μονάδας μετά την αφαίρεση των φόρων (πχ. ΦΠΑ), των επιστροφών, των εκπτώσεων και της αξίας των κατεστραμμένων προϊόντων]
 [Documentation net_sales]
@@ -298,7 +117,7 @@ class MetaMaintenanceRepair:
 
 class MetaReturnTotalCapitalEmployed:
     """## Return:  meta data"""
-
+    
     net_profit = """[Τεκμηρίωση net_profit]
 [Στις επιχειρήσεις, το καθαρό εισόδημα ή τα καθαρά κέρδη είναι τα έσοδα μείον το κόστος πωληθέντων αγαθών, τα έξοδα και τους φόρους για μια λογιστική χρήση.]
 [Documentation net_profit]
@@ -330,12 +149,15 @@ class MetaReturnTotalCapitalEmployed:
 """
 
 
-def __str__(self):
-    attributes = [
-        self.circulating_assets,
-        self.short_term_liabilities,
-        self.available_cash,
-        self.forecast_daily_expenses,
-        self.requirements,
-    ]
-    return "\n\n".join(map(str, attributes))
+
+
+
+# def __str__(self):
+#     attributes = [
+#         self.circulating_assets,
+#         self.short_term_liabilities,
+#         self.available_cash,
+#         self.forecast_daily_expenses,
+#         self.requirements,
+#     ]
+#     return "\n\n".join(map(str, attributes))

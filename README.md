@@ -7,5 +7,6 @@
 
 
 - Modules [GR](Documentation/modules_el.md) [EN](Documentation/modules_en.md) 
+- Args [GR](Documentation/args_el.md) [EN](Documentation/args_en.md)
 - Version Development [GR](Documentation/version_el.md) [EN](Documentation/version_en.md) 
 
