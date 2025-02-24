@@ -99,46 +99,46 @@
     - Module liquidityradios
         - class LiquidityRadios
             - current_radio
-            - Αριθμοδείκτης Γενικής  ή έμμεσης ρευστότητας
-            -  Args: 
-                - circulating_assets
-                - short_term_liabilities
+                - Αριθμοδείκτης Γενικής  ή έμμεσης ρευστότητας
+                -  Args: 
+                    - circulating_assets
+                    - short_term_liabilities
             - return 
 
             - cash_radio 
-            - Αριθμοδείκτης ταμειακής ρευστότητας
-            - Args: 
-                - available_cash
-                - short_term_liabilities
+                - Αριθμοδείκτης ταμειακής ρευστότητας
+                - Args: 
+                    - available_cash
+                    - short_term_liabilities
             - return
 
             - defensive_interval
-            - Το αμυντικό διάστημα
-            - Args: 
-                - circulating_assets
-                - forecast_daily_expenses
+                - Το αμυντικό διάστημα
+                - Args: 
+                    - circulating_assets
+                    - forecast_daily_expenses
             - return
 
             - net_working_capital
-            - καθαρο κεφαλαιο κινησης
-            - Args: 
-                - short_term_liabilities
-                - circulating_assets
+                - καθαρο κεφαλαιο κινησης
+                - Args: 
+                    - short_term_liabilities
+                    - circulating_assets
             - return
 
             - acid_test_radio
-            - Άμεση ρευστότητα
-            - Args: 
-                - circulating_assets
-                - stocks
+                - Άμεση ρευστότητα
+                - Args: 
+                    - circulating_assets
+                    - stocks
             - return
 
             - quick_radio
-            - Άμεση ρευστότητα
-            - Args: 
-                - requirements
-                - available_cash
-                - short_term_liabilities
+                - Άμεση ρευστότητα
+                - Args: 
+                    - requirements
+                    - available_cash
+                    - short_term_liabilities
             - return
 
 - profitability_radios
@@ -162,9 +162,20 @@
                     - fixed_asset
                     - equity_capital
                 - return: round((self.fixed_asset / self.equity_capital), 2)
-
             - equity_multiplier
+                - Ο πολλαπλασιαστή ιδίων κεφαλαίων, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση. Η μεθοδος απεικονίζει το άθροισμα των γινομενων τριων συναρτησεων.
+                - Args:
+                    - net_profit_margin()
+                    - asset_turnover_velocity()
+                    - financial_leverage()
+                - return:  return round((self.net_profit_margin()* self.asset_turnover_velocity()
+                    * self.financial_leverage()), 2,)  
             - Restatement_equity_multiplier
+                - Η επαναδιατύπωσης πολλαπλασιαστή ιδίων κεφαλαίων, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση. Η μεθοδος απεικονίζει το αποτέλεσμα διαίρεσης του μεγεθους καθαρα κερδη / ιδια κεφαλαια.
+                - Args:
+                    - net_profits
+                    - equity_capital
+                - return round((self.net_profits / self.equity_capital), 2)
     - module financial_leverage
         - class FinancialLeverageRadio
             - financial_leverage
