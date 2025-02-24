@@ -95,7 +95,7 @@
                         - net_profit (float):ίδια κεφάλαια
                     - Returns : 
 
-- LiquidityRadios
+- library LiquidityRadios
     - Module liquidityradios
         - class LiquidityRadios
             - current_radio
@@ -141,4 +141,34 @@
                 - short_term_liabilities
             - return
 
-            
+- profitability_radios
+    - module equity_capital
+        - class EquityCapital
+            - net_profit_margin
+                - Η μέθοδος καθαρό περιθώριο κέρδους, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση
+                - Args: 
+                    - net_profits
+                    - net_sales
+                - return  round((self.net_profits/self.net_sales), 2)
+            - asset_turnover_velocity
+                -  Η μέθοδος ταχυτητα κυκλοφοριας ενεργητικου, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση.
+                - Args: 
+                    - net_sales
+                    - fixed_asset
+                - return: round((self.net_sales / self.fixed_asset), 2)
+            - financial_leverage
+                - Η χρηματοοικονομικη μόχλευση, κληρονομεί τους λογαριασμούς από την EquityCapital κλάση.
+                - Args: 
+                    - fixed_asset
+                    - equity_capital
+                - return: round((self.fixed_asset / self.equity_capital), 2)
+
+            - equity_multiplier
+            - Restatement_equity_multiplier
+    - module financial_leverage
+        - class FinancialLeverageRadio
+            - financial_leverage
+            - economic_benefits
+    - module grossprofit
+    - module maintenanceandrepair
+    - total_capital_employed
