@@ -1,27 +1,41 @@
-import locale
+import sys
+import os
 
-locale.setlocale(locale.LC_ALL, "")
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from net_analysis.setting.number_output_formatting import display_locale
+from net_analysis.setting.number_output_formatting import is_valid_number
 
 
-class Data:
-    pass
+class ViewCapitalStructure:
+    def __init__(
+        self,
+        value: float,
+        asset_turnover_velocity: float,
+        equity_capital_efficiency: float,
+        method_name: str,
+    ):
+        self.value = display_locale(value)
+        self.method_name = method_name.replace("_", " ").title()
+
+    def __str__(self) -> str:
+        return f"{self.method_name}: {self.value}"
 
 
-class capital_structure:
+class CapitalStructure:
     """_summary_"""
 
     def __init__(
         self,
-        total_assets: float = 1.0,
-        fixed: float = 1.0,
-        current_assets: float = 1.0,
-        liabilities: float = 1.0,
-        self_foreign: float = 1.0,
-        short_term_foreign_funds: float = 1.0,
-        long_term_foreign_capital: float = 1.0,
-        interest_rate: float = 0.1,
-        market_capitalization_of_equity: float = 1.0,
-        tax_rate: float = 1.0,
+        total_assets: float,
+        fixed: float,
+        current_assets: float,
+        liabilities: float,
+        self_foreign: float,
+        short_term_foreign_funds: float,
+        long_term_foreign_capital: float,
+        interest_rate: float,
+        market_capitalization_of_equity: float,
+        tax_rate: float,
     ):
         self.total_assets = total_assets
         self.fixed = fixed
@@ -35,32 +49,20 @@ class capital_structure:
         self.market_capitalization_of_equity = market_capitalization_of_equity
         self.dict = {"foreign_capital": "The total foreign capital is:"}
 
-    def foreign_capital_ratio_calculation(self):
-        import math
-
-        epsilon = 1e-9
+    def foreign_capital_ratio_calculation(self) -> ViewCapitalStructure:
         """
-        Υπολογίζει το συνολικό ξένο κεφάλαιο με βάση τα short-term 
+        Υπολογίζει το συνολικό ξένο κεφάλαιο με βάση τα short-term
         και long-term κεφάλαια, και επιστρέφει το αποτέλεσμα.
         """
-        if math.isclose(
-            self.short_term_foreign_funds, 1.0, abs_tol=epsilon
-        ) and math.isclose(self.long_term_foreign_capital, 1.0, abs_tol=epsilon):
-            return 0.0
+        short_term_foreign_funds = is_valid_number(self.short_term_foreign_funds)
+        long_term_foreign_capital = is_valid_number(self.long_term_foreign_capital)
+        if isinstance(short_term_foreign_funds, (str)) or isinstance(
+            long_term_foreign_capital, (str)
+        ):
+            return ViewCapitalStructure(0.0, sys._getframe(0).f_code.co_name)
 
-        # Έλεγχος για την περίπτωση που και τα δύο δεν είναι 1.0
-        if not math.isclose(
-            self.short_term_foreign_funds, 1.0, abs_tol=epsilon
-        ) and not math.isclose(self.long_term_foreign_capital, 1.0, abs_tol=epsilon):
-            return self.short_term_foreign_funds + self.long_term_foreign_capital
-
-        # Έλεγχος αν μόνο το short_term είναι 1.0
-        if math.isclose(self.short_term_foreign_funds, 1.0, abs_tol=epsilon):
-            return self.long_term_foreign_capital
-
-        # Έλεγχος αν μόνο το long_term είναι 1.0
-        if math.isclose(self.long_term_foreign_capital, 1.0, abs_tol=epsilon):
-            return self.short_term_foreign_funds
+        values = round((short_term_foreign_funds / long_term_foreign_capital), 2)
+        return ViewCapitalStructure(values, sys._getframe(0).f_code.co_name)
 
     def total_capital(self) -> float:
         return sum([self.long_term_foreign_capital + self.short_term_foreign_funds])

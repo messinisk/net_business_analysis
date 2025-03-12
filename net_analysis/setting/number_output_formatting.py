@@ -1,35 +1,33 @@
 import locale
-from functools import wraps
+import sys
+import os
 
-locale.setlocale(locale.LC_ALL, '')
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+locale.setlocale(locale.LC_ALL, "")
 
-def display_locale(gui_mode=False):
-    """ 
-    Αν ο χρήστης γράψει `@display_locale` χωρίς παρένθεση
+
+def display_locale(value):
     """
-    if callable(gui_mode):
-        func = gui_mode
-        gui_mode = False  # Προεπιλογή
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            result = func(*args, **kwargs)
-            if isinstance(result, (int, float)):
-                formatted_result = locale.format_string("%.2f", result, grouping=True)
-                print(formatted_result)  # Για CLI, εμφανίζει αυτόματα
-                return result  # Κρατάει την αριθμητική τιμή για επεξεργασία
-            return result
-        return wrapper
+    Αντικαθιστά το round() και μορφοποιεί το αποτέλεσμα σύμφωνα με το locale.
+    """
 
-    # Αν ο χρήστης γράψει `@display_locale(gui_mode=True)`
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            result = func(*args, **kwargs)
-            if isinstance(result, (int, float)):
-                formatted_result = locale.format_string("%.2f", result, grouping=True)
-                if gui_mode:
-                    return formatted_result  # Για GUI, επιστρέφει string
-                print(formatted_result)  # Για CLI, εμφανίζει αυτόματα
-            return result  # Αν δεν είναι αριθμός, επιστρέφει κανονικά την τιμή
-        return wrapper
-    return decorator
+    if isinstance(value, (int, float)):
+        value = abs(value)
+        formatted_value = locale.format_string("%.2f", value, grouping=True)
+        return formatted_value
+    else:
+        return value  # Αν δεν είναι αριθμός, επιστρέφει το αρχικό δεδομένο
+
+
+def is_valid_number(value) -> float | str:
+    if isinstance(value, (int, float)):
+        if value == 0:
+            return "The value must not be zero."
+        else:
+            return abs(value)  # Επιστρέφουμε την απόλυτη τιμή
+
+    if isinstance(value, str):
+        if value.lstrip("-").isdigit():  # Αν είναι αριθμός
+            value = value.lstrip("-").replace("-", "")
+            return abs(float(value))  # Επιστρέφουμε την απόλυτη τιμή
+    return f"this -> ({value}) Not number"  # Αν δεν είναι αριθμός

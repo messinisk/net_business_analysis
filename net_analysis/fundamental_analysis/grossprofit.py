@@ -1,8 +1,18 @@
 import sys
 import os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from net_analysis.setting.return_func_error import validate_numerical_inputs
 from net_analysis.setting.number_output_formatting import display_locale
+from net_analysis.setting.number_output_formatting import is_valid_number
+
+
+class ViewGrossMargin:
+    def __init__(self, value: float, method_name: str):
+        self.value = display_locale(value)
+        self.method_name = method_name.replace("_", " ").title()
+
+    def __str__(self) -> str:
+        return f"{self.method_name}: {self.value}"
 
 
 class GrossMargin:
@@ -10,13 +20,9 @@ class GrossMargin:
     ### Τεκμηρίωση\n
     Η κλάση Μικτό περιθώριο,  ενσωματώνει όλους   εκείνους τους λογαριασμούς που χρησιμοποιούν οι μέθοδοι του.\n
     Αυτή οι λογαριασμοί  Αρχικοποιούνται ως πραγματική κάτι συνηθισμένο στον τρόπο απεικόνισης στην λογιστική.\n
-    Για να   αντιμετωπίσουμε πιθανό σφάλματα Division Error που αφορά διαίρεση με το 0  αρχικοποιούμε  σε τιμή ίση με  1.0\n
-    και ταυτόχρονα αποκτάμε προαιρετική χρήση μεθόδων άλλα και  επιλογή ποια ορίσματα θέλουμε.\n\n
     ### Documentation\n
     The Gross Margin class encapsulates all those accounts that its methods use.\n
     This accounts are initialized as real something common in the way of representation in accounting.\n
-    To deal with possible Division Error errors related to division by 0 we initialize to a value equal to 1.0\n
-    and at the same time get optional use of other methods and choice of which arguments we want.
         method :
             +gross_profit_margin
             +net_profit_margin
@@ -26,12 +32,12 @@ class GrossMargin:
 
     def __init__(
         self,
-        gross_operating_profit: float = 1.0,
-        net_sales: float = 1.0,
-        net_operating_profit: float = 1.0,
-        sales: float = 1.0,
-        net_profit_of_use: float = 1.0,
-        total_of_these_funds: float = 1.0,
+        gross_operating_profit: float,
+        net_sales: float,
+        net_operating_profit: float,
+        sales: float,
+        net_profit_of_use: float,
+        total_of_these_funds: float,
     ) -> None:
         self.gross_operating_profit = gross_operating_profit
         self.net_sales = net_sales
@@ -40,9 +46,7 @@ class GrossMargin:
         self.net_profit_of_use = net_profit_of_use
         self.total_of_these_funds = total_of_these_funds
 
-    @validate_numerical_inputs
-    @display_locale
-    def gross_profit_margin(self) -> float:
+    def gross_profit_margin(self) -> ViewGrossMargin:
         """
         ### Τεκμηρίωση\n
         Η μέθοδος Μικτό περιθώριο \
@@ -59,11 +63,16 @@ class GrossMargin:
             clearly shows both the act of division and rounding to two decimal places.
         ### round((self.gross_operating_profit /self.net_sales), 2)\n
         """
-        return round((self.gross_operating_profit / self.net_sales), 2)
+        gross_operating_profit = is_valid_number(self.gross_operating_profit)
+        net_sales = is_valid_number(self.net_sales)
 
-    @validate_numerical_inputs
-    @display_locale
-    def net_profit_margin(self) -> float:
+        if isinstance(gross_operating_profit, str) or isinstance(net_sales, str):
+            return ViewGrossMargin(0.0, sys._getframe(0).f_code.co_name)
+
+        values = round(gross_operating_profit / net_sales, 2)
+        return ViewGrossMargin(values, sys._getframe(0).f_code.co_name)
+
+    def net_profit_margin(self) -> ViewGrossMargin:
         """
         ### Τεκμηρίωση\n
         Η μέθοδος περιθώριο καθαρού κέρδους,\n
@@ -84,11 +93,16 @@ class GrossMargin:
                 the division operation and rounding to two decimal places.\n
         round((self.net_operating_profit / self.net_sales), 2)
         """
-        return round((self.net_operating_profit / self.net_sales), 2)
+        net_operating_profit = is_valid_number(self.net_operating_profit)
+        net_sales = is_valid_number(self.net_sales)
 
-    @validate_numerical_inputs
-    @display_locale
-    def net_profits(self) -> float:
+        if isinstance(net_operating_profit, str) or isinstance(net_sales, str):
+            return ViewGrossMargin(0.0, sys._getframe(0).f_code.co_name)
+
+        values = round(net_operating_profit / net_sales, 2)
+        return ViewGrossMargin(values, sys._getframe(0).f_code.co_name)
+
+    def net_profits(self) -> ViewGrossMargin:
         """
         Τεκμηρίωση\n
         Η μέθοδος καθαρά κέρδη,\n
@@ -113,11 +127,16 @@ class GrossMargin:
             results to be rounded to two decimal places.\n
         ### round((self.sales * self.net_profit_margin()), 2)
         """
-        return round((self.sales * self.net_profit_margin()), 2)
+        sales = is_valid_number(self.sales)
+        net_profit_margin = is_valid_number(self.net_profit_margin())
 
-    @validate_numerical_inputs
-    @display_locale
-    def return_on_equity(self) -> float:
+        if isinstance(sales, str) or isinstance(net_profit_margin, str):
+            return ViewGrossMargin(0.0, sys._getframe(0).f_code.co_name)
+
+        values = round(sales * net_profit_margin, 2)
+        return ViewGrossMargin(values, sys._getframe(0).f_code.co_name)
+
+    def return_on_equity(self) -> ViewGrossMargin:
         """
         ### Τεκμηρίωση\n
         Η μέθοδος  απόδοση ιδίων κεφαλαίων,\n
@@ -135,4 +154,11 @@ class GrossMargin:
               both the division operation and rounding to two decimal places.\n
         ### round((self.net_profit_of_use / self.total_of_these_funds), 2)
         """
-        return round((self.net_profit_of_use / self.total_of_these_funds), 2)
+        net_profit_of_use = is_valid_number(self.net_profit_of_use)
+        total_of_these_funds = is_valid_number(self.total_of_these_funds)
+
+        if isinstance(net_profit_of_use, str) or isinstance(total_of_these_funds, str):
+            return ViewGrossMargin(0.0, sys._getframe(0).f_code.co_name)
+
+        values = round(net_profit_of_use / total_of_these_funds, 2)
+        return ViewGrossMargin(values, sys._getframe(0).f_code.co_name)
