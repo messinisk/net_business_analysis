@@ -10,3 +10,15 @@
 {"method_name": "Owners Equity Turnover Ratio", "judge": "0,20"}
 {"method_name": "Owners Equity Turnover Ratio", "judge": "1,00"}
 {"method_name": "Owners Equity Turnover Ratio", "judge": "1,00"}
+{"method_name": "Gross Profit Margin", "judge": "0,10", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profit Margin", "judge": "0,01", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profit Margin", "judge": "0,01", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profits", "judge": "0,00", "quality_indicator": null, "currency": null}
+{"method_name": "Return On Equity", "judge": "0,10", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profits", "judge": "0,00", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profit Margin", "judge": "0,01", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profits", "judge": "0,00", "quality_indicator": null, "currency": null}
+{"method_name": "Return On Equity", "judge": "0,10", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profit Margin", "judge": "0,01", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profits", "judge": "0,00", "quality_indicator": null, "currency": null}
+{"method_name": "Net Profits", "judge": "0,00", "quality_indicator": null, "currency": null}

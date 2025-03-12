@@ -85,17 +85,17 @@ class LiquidityRadios:
 
     def __init__(
         self,
-        circulating_assets: float,
-        short_term_liabilities: float,
-        available_cash: float,
-        stocks: float,
-        requirements: float,
-        cost_of_goods_sold: float,
-        administrative_expenses: float,
-        research_and_development_expenses: float,
-        disposal_costs: float,
-        financial_expenses: float,
-        built_in_depreciation: float,
+        circulating_assets: Optional[float],
+        short_term_liabilities: Optional[float],
+        available_cash: Optional[float],
+        stocks: Optional[float],
+        requirements: Optional[float],
+        cost_of_goods_sold: Optional[float],
+        administrative_expenses: Optional[float],
+        research_and_development_expenses: Optional[float],
+        disposal_costs: Optional[float],
+        financial_expenses: Optional[float],
+        built_in_depreciation: Optional[float],
         days: int = 365,
     ) -> None:
         self.circulating_assets = circulating_assets
