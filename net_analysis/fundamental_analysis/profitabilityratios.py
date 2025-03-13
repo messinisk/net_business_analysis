@@ -110,7 +110,8 @@ class GrossMargin:
         self.net_profitmargin = net_profitmargin
 
     def gross_profit_margin(self) -> ViewGrossMargin:
-        """μικτά περιθώρια κέρδους  """
+        """μικτά περιθώρια κέρδους\
+         round(gross_operating_profit / net_sales, 2)  """
         gross_operating_profit = is_valid_number(self.gross_operating_profit)
         net_sales = is_valid_number(self.net_sales)
 

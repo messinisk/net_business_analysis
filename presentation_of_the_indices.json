@@ -22,3 +22,7 @@
 {"method_name": "Net Profit Margin", "judge": "0,01", "quality_indicator": null, "currency": null}
 {"method_name": "Net Profits", "judge": "0,00", "quality_indicator": null, "currency": null}
 {"method_name": "Net Profits", "judge": "0,00", "quality_indicator": null, "currency": null}
+{"method_name": "Value Total Capital", "judge": "16.171.118,60"}
+{"method_name": "Net Profit Margin", "judge": "23.002,39"}
+{"method_name": "Asset Turnover Velocity", "judge": "703,02"}
+{"method_name": "Return Total Capital Employed", "judge": "10,01"}
