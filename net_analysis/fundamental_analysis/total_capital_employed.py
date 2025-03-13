@@ -14,7 +14,6 @@ class ViewReturnTotalCapitalEmployed:
         self,
         method_name: str,
         judge: Optional[float] = None,
-
     ):
         self.judge = display_locale(
             judge
@@ -64,12 +63,12 @@ class ReturnTotalCapitalEmployed:
     def __init__(
         self,
         net_profits: Optional[float],
-        interest:  Optional[float],
-        total_capital:  Optional[float],
-        tax_rate:  Optional[float],
-        net_sales:  Optional[float],
+        interest: Optional[float],
+        total_capital: Optional[float],
+        tax_rate: Optional[float],
+        net_sales: Optional[float],
         net_margin: Optional[float],
-        asset_velocity: Optional[float]
+        asset_velocity: Optional[float],
     ):
         self.net_profits = net_profits
         self.interest = interest
@@ -93,7 +92,7 @@ class ReturnTotalCapitalEmployed:
         interest = is_valid_number(self.interest)
         # συντελεστης  φορου
         tax_rate = is_valid_number(self.tax_rate)
-        # Συνολικα κεφαλαια 
+        # Συνολικα κεφαλαια
         total_capital = is_valid_number(self.total_capital)
 
         if (
@@ -133,7 +132,7 @@ class ReturnTotalCapitalEmployed:
             return ViewReturnTotalCapitalEmployed(sys._getframe(0).f_code.co_name, 0.0)
 
         judge = round((net_profits + interest * (1 - tax_rate)) / net_sales, 2)
-        self.net_margin  = judge
+        self.net_margin = judge
 
         return ViewReturnTotalCapitalEmployed(sys._getframe(0).f_code.co_name, judge)
 
@@ -168,7 +167,7 @@ class ReturnTotalCapitalEmployed:
         net_profit_margin = is_valid_number(self.net_margin)
         # asset_turnover_velocity() == self.asset_velocity
         asset_turnover_velocity = is_valid_number(self.asset_velocity)
-         
+
         if isinstance(net_profit_margin, str) or isinstance(
             asset_turnover_velocity, str
         ):
@@ -177,15 +176,16 @@ class ReturnTotalCapitalEmployed:
         judge = round(net_profit_margin / asset_turnover_velocity, 2)
         return ViewReturnTotalCapitalEmployed(sys._getframe(0).f_code.co_name, judge)
 
+
 if __name__ == "__main__":
     grossmargin = ReturnTotalCapitalEmployed(
-        net_profits = 55222,
-        interest = 555555,
-        total_capital = 22555,
-        tax_rate = 656533,
-        net_sales = 15856598,
-        net_margin = 2127878,
-        asset_velocity = 212498
+        net_profits=55222,
+        interest=555555,
+        total_capital=22555,
+        tax_rate=656533,
+        net_sales=15856598,
+        net_margin=2127878,
+        asset_velocity=212498,
     )
     viewgrossmargin = grossmargin.return_total_capital_employed()
     print(viewgrossmargin)

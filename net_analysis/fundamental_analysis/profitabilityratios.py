@@ -99,8 +99,8 @@ class GrossMargin:
         sales: Optional[float],
         net_profit_of_use: Optional[float],
         total_of_these_funds: Optional[float],
-        net_profitmargin: Optional[float]=  0
-        ) -> None:
+        net_profitmargin: Optional[float] = 0,
+    ) -> None:
         self.gross_operating_profit = gross_operating_profit
         self.net_sales = net_sales
         self.net_operating_profit = net_operating_profit
@@ -174,7 +174,7 @@ if __name__ == "__main__":
         net_operating_profit=25000,
         sales=2588800009,
         net_profit_of_use=258809,
-        total_of_these_funds=2588809
+        total_of_these_funds=2588809,
     )
     viewgrossmargin = grossmargin.net_profits()
     print(viewgrossmargin)

@@ -1,3 +1,4 @@
+import json
 import sys
 import os
 
@@ -7,12 +8,34 @@ from net_analysis.setting.number_output_formatting import is_valid_number
 
 
 class ViewMaintenanceRepair:
-    def __init__(self, value: float, method_name: str):
-        self.value = display_locale(value)
-        self.method_name = method_name.replace("_", " ").title()
+    def __init__(
+        self,
+        method_name: str,
+        judge: float,
+    ):
+        self.judge = display_locale(
+            judge
+        )  # Διασφαλίζουμε ότι είναι float με 2 δεκαδικά
+        self.method_name = method_name.replace("_", " ").title()  # Διαμόρφωση τίτλου
+        self.activity_radio = self.to_dict()  # Δημιουργία λεξικού
+        self.write_json_temp()  # Αποθήκευση σε JSON
+
+    def to_dict(self):
+        """Δημιουργεί το dictionary, παραλείποντας `None` values"""
+        data = {"method_name": self.method_name, "judge": self.judge}
+        return data
+
+    def write_json_temp(self):
+        """Αποθηκεύει το dictionary σε αρχείο JSON, χωρίς κενές τιμές"""
+        with open("presentation_of_the_indices.json", mode="a") as file:
+            json.dump(self.activity_radio, file, ensure_ascii=False)
+            file.write("\n")
 
     def __str__(self) -> str:
-        return f"{self.method_name}: {self.value}"
+        """Επιστρέφει μια καθαρή περιγραφή της κλάσης"""
+        output = f"{self.method_name}, judge: {self.judge}"
+        return output
+
 
 
 class MaintenanceRepair:
@@ -73,12 +96,12 @@ class MaintenanceRepair:
         if isinstance(maintenance_and_repair_costs, str) or isinstance(
             fixed_assets_before_depreciation, str
         ):
-            return ViewMaintenanceRepair(0.0, sys._getframe(0).f_code.co_name)
+            return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, 0.0)
 
-        values = round(
+        judge = round(
             maintenance_and_repair_costs / fixed_assets_before_depreciation, 2
         )
-        return ViewMaintenanceRepair(values, sys._getframe(0).f_code.co_name)
+        return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, judge)
 
     def maintenance_and_repair_costs_to_sales(self) -> ViewMaintenanceRepair:
         """
@@ -94,10 +117,10 @@ class MaintenanceRepair:
         net_sales = is_valid_number(self.net_sales)
 
         if isinstance(maintenance_and_repair_costs, str) or isinstance(net_sales, str):
-            return ViewMaintenanceRepair(0.0, sys._getframe(0).f_code.co_name)
+            return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, 0.0)
 
-        values = round(maintenance_and_repair_costs / net_sales, 2)
-        return ViewMaintenanceRepair(values, sys._getframe(0).f_code.co_name)
+        judge = round(maintenance_and_repair_costs / net_sales, 2)
+        return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, judge)
 
     def depreciation_of_fixed_assets(self) -> ViewMaintenanceRepair:
         """
@@ -115,10 +138,10 @@ class MaintenanceRepair:
         if isinstance(depreciation_of_use, str) or isinstance(
             fixed_assets_before_depreciation, str
         ):
-            return ViewMaintenanceRepair(0.0, sys._getframe(0).f_code.co_name)
+            return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, 0.0)
 
-        values = round(depreciation_of_use / fixed_assets_before_depreciation, 2)
-        return ViewMaintenanceRepair(values, sys._getframe(0).f_code.co_name)
+        judge = round(depreciation_of_use / fixed_assets_before_depreciation, 2)
+        return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, judge)
 
     def depreciation_to_net_sales(self) -> ViewMaintenanceRepair:
         """
@@ -132,10 +155,10 @@ class MaintenanceRepair:
         net_sales = is_valid_number(self.net_sales)
 
         if isinstance(depreciation_of_use, str) or isinstance(net_sales, str):
-            return ViewMaintenanceRepair(0.0, sys._getframe(0).f_code.co_name)
+            return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, 0.0)
 
-        values = round(depreciation_of_use / net_sales, 2)
-        return ViewMaintenanceRepair(values, sys._getframe(0).f_code.co_name)
+        judge = round(depreciation_of_use / net_sales, 2)
+        return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, judge)
 
     def operating_expenses(self) -> ViewMaintenanceRepair:
         """
@@ -154,13 +177,14 @@ class MaintenanceRepair:
             or isinstance(due_to_operating_expenses, str)
             or isinstance(net_sales, str)
         ):
-            return ViewMaintenanceRepair(0.0, sys._getframe(0).f_code.co_name)
+            return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, 0.0)
 
-        values = round(
-            (self.cost_of_goods_sold + self.due_to_operating_expenses) / self.net_sales,
-            2,
+        judge = round(
+            (self.cost_of_goods_sold + self.due_to_operating_expenses)
+            / self.net_sales,
+            2
         )
-        return ViewMaintenanceRepair(values, sys._getframe(0).f_code.co_name)
+        return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, judge)
 
     def operating_expenses_to_sales(self) -> ViewMaintenanceRepair:
         """
@@ -174,7 +198,7 @@ class MaintenanceRepair:
         net_sales = is_valid_number(self.net_sales)
 
         if isinstance(due_to_operating_expenses, str) or isinstance(net_sales, str):
-            return ViewMaintenanceRepair(0.0, sys._getframe(0).f_code.co_name)
+            return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, 0.0)
 
-        values = round(due_to_operating_expenses / net_sales, 2)
-        return ViewMaintenanceRepair(values, sys._getframe(0).f_code.co_name)
+        judge = round(due_to_operating_expenses / net_sales, 2)
+        return ViewMaintenanceRepair(sys._getframe(0).f_code.co_name, judge)
