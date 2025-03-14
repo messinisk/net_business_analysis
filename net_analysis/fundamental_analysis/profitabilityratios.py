@@ -141,7 +141,8 @@ class GrossMargin:
         Η μέθοδος "καθαρά κέρδη"
         """
         sales = is_valid_number(self.sales)
-        net_profitmargin = self.net_profitmargin
+        net_profitmargin = is_valid_number(
+            self.net_profitmargin)
 
         if isinstance(sales, str) or isinstance(net_profitmargin, str):
             return ViewGrossMargin(sys._getframe(0).f_code.co_name, 0.0)

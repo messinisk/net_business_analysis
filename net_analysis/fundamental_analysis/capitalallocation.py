@@ -10,8 +10,6 @@ class ViewCapitalStructure:
     def __init__(
         self,
         value: float,
-        asset_turnover_velocity: float,
-        equity_capital_efficiency: float,
         method_name: str,
     ):
         self.value = display_locale(value)
